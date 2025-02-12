@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/models/character_model.dart';
+import 'package:rick_and_morty_app/statics/static_texts.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
@@ -118,9 +119,10 @@ class _CharacterCard extends StatelessWidget {
                     ),
                     SizedBox(height: 4),
                     Text(
-                        'Last known location:\n${_model?.location?.name ?? ''}'),
+                        '${StaticTexts.cardFirstSubtitle}:\n${_model?.location?.name ?? ''}'),
                     SizedBox(height: 12),
-                    Text('First seen in:\n${_model?.origin?.name ?? ''}'),
+                    Text(
+                        '${StaticTexts.cardSecondSubtitle}:\n${_model?.origin?.name ?? ''}'),
                   ],
                 ),
               ),
