@@ -15,6 +15,8 @@ class CharacterPage extends StatefulWidget {
 class _CharacterPageState extends State<CharacterPage> {
   List<CharacterModel>? _items;
   bool _isLoading = false;
+  late final Dio _dio;
+  final _baseUrl = 'https://rickandmortyapi.com/api';
 
   void changeLoading() {
     setState(() {
@@ -22,10 +24,10 @@ class _CharacterPageState extends State<CharacterPage> {
     });
   }
 
+  // characterleri getir
   Future<void> fetchGetItems() async {
     changeLoading();
-    final response =
-        await Dio().get('https://rickandmortyapi.com/api/character');
+    final response = await _dio.get('/character');
 
     if (response.statusCode == HttpStatus.ok) {
       final datas = response.data;
@@ -44,6 +46,7 @@ class _CharacterPageState extends State<CharacterPage> {
   @override
   void initState() {
     super.initState();
+    _dio = Dio(BaseOptions(baseUrl: _baseUrl));
     fetchGetItems();
   }
 
