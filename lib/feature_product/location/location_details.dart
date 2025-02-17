@@ -12,13 +12,13 @@ class LocationDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200, // Daha açık bir arka plan
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: Text(
           location.name ?? '',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue.shade300, // Açık mavi tonları
+        backgroundColor: Colors.green.shade400,
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -27,10 +27,8 @@ class LocationDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Lokasyon Bilgileri Kartları
             _infoCard(Icons.public, "Type", location.type),
             _infoCard(Icons.location_on, "Dimension", location.dimension),
-
             const SizedBox(height: 16),
             Text(
               'Residents',
@@ -41,8 +39,6 @@ class LocationDetails extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-
-            // Karakter Listesi
             ...location.residents!.map((characterUrl) {
               return FutureBuilder<CharacterModel?>(
                 future: _service.getCharacter(characterUrl),
@@ -66,10 +62,9 @@ class LocationDetails extends StatelessWidget {
     );
   }
 
-  // Bilgi Kartı
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
-      color: Colors.blueGrey.shade100, // Daha açık tonlar
+      color: Colors.blueGrey.shade100,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
@@ -87,11 +82,10 @@ class LocationDetails extends StatelessWidget {
     );
   }
 
-  // Karakter Kartı
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
-      color: Colors.white, // Daha açık, temiz bir görünüm
-      elevation: 2, // Hafif gölge
+      color: Colors.white,
+      elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
@@ -132,7 +126,6 @@ class LocationDetails extends StatelessWidget {
     );
   }
 
-  // Yükleme Kartı
   Widget _loadingCard() {
     return Card(
       color: Colors.grey.shade300,
@@ -148,7 +141,6 @@ class LocationDetails extends StatelessWidget {
     );
   }
 
-  // Hata Kartı
   Widget _errorCard() {
     return Card(
       color: Colors.red.shade100,
@@ -163,7 +155,6 @@ class LocationDetails extends StatelessWidget {
     );
   }
 
-  // Veri Yok Kartı
   Widget _noDataCard() {
     return Card(
       color: Colors.grey.shade300,

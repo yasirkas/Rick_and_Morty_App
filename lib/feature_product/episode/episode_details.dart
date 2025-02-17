@@ -86,11 +86,10 @@ class EpisodeDetails extends StatelessWidget {
     );
   }
 
-  // Karakter Kartı
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
-      color: Colors.white, // Temiz ve modern görünüm
-      elevation: 2, // Hafif gölge efekti
+      color: Colors.white, 
+      elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
@@ -131,7 +130,6 @@ class EpisodeDetails extends StatelessWidget {
     );
   }
 
-  // Yükleme Kartı
   Widget _loadingCard() {
     return Card(
       color: Colors.grey.shade300,
@@ -147,7 +145,7 @@ class EpisodeDetails extends StatelessWidget {
     );
   }
 
-  // Hata Kartı
+
   Widget _errorCard() {
     return Card(
       color: Colors.red.shade100,
@@ -162,7 +160,6 @@ class EpisodeDetails extends StatelessWidget {
     );
   }
 
-  // Veri Yok Kartı
   Widget _noDataCard() {
     return Card(
       color: Colors.grey.shade300,

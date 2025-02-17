@@ -8,11 +8,11 @@ class CharacterDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey.shade50, // Açık ton arka plan
+      backgroundColor: Colors.blueGrey.shade50,
       appBar: AppBar(
         title: Text(character.name ?? ''),
-        backgroundColor: Colors.lightBlue.shade200,
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.orange.shade200,
+        foregroundColor: Colors.white,
         elevation: 2,
       ),
       body: SingleChildScrollView(
@@ -36,7 +36,6 @@ class CharacterDetails extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Bilgi Kartları
             _infoCard(Icons.person, "Species", character.species),
             _infoCard(Icons.male, "Gender", character.gender),
             _infoCard(Icons.location_on, "Location", character.location?.name),

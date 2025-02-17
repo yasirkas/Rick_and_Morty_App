@@ -32,6 +32,7 @@ class _CharacterPageState extends State<CharacterPage> {
         centerTitle: true,
         title: const Text("Characters"),
         backgroundColor: Colors.orangeAccent,
+        foregroundColor: Colors.white,
       ),
       body: _characters == null
           ? const Center(child: CircularProgressIndicator())

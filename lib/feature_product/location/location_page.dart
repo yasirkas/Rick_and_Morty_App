@@ -35,7 +35,7 @@ class _LocationPageState extends State<LocationPage>
         centerTitle: true,
         foregroundColor: Colors.white,
         title: const Text("Locations"),
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.green,
         actions: [
           isLoading
               ? const CircularProgressIndicator.adaptive()
