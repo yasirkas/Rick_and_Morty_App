@@ -13,15 +13,17 @@ class EpisodeDetails extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
         foregroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('AirDate: ${episode.airDate}'),
-            Text('Episode: ${episode.episode}'),
-            Text('Characters: ${episode.characters}'),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('AirDate: ${episode.airDate}'),
+              Text('Episode: ${episode.episode}'),
+              Text('Characters: ${episode.characters}'),
+            ],
+          ),
         ),
       ),
     );
