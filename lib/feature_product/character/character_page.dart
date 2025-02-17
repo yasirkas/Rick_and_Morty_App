@@ -1,9 +1,7 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_details.dart';
+import 'package:rick_and_morty_app/feature_product/service/service.dart';
 import 'package:rick_and_morty_app/feature_product/utility/loading_mixin.dart';
 import 'package:rick_and_morty_app/feature_product/utility/static_texts.dart';
 
@@ -17,32 +15,18 @@ class CharacterPage extends StatefulWidget {
 class _CharacterPageState extends State<CharacterPage>
     with LoadingMixin<CharacterPage> {
   List<CharacterModel>? _characters;
-  late final Dio _dio;
-  final _baseUrl = 'https://rickandmortyapi.com/api';
-
-  Future<void> getCharacters() async {
-    changeLoading();
-    final response = await _dio.get('/character');
-
-    if (response.statusCode == HttpStatus.ok) {
-      final datas = response.data;
-
-      if (datas is Map<String, dynamic>) {
-        final characterModel = datas['results'] as List<dynamic>;
-        setState(() {
-          _characters =
-              characterModel.map((e) => CharacterModel.fromJson(e)).toList();
-        });
-      }
-    }
-    changeLoading();
-  }
+  final Service _service = Service();
 
   @override
   void initState() {
     super.initState();
-    _dio = Dio(BaseOptions(baseUrl: _baseUrl));
-    getCharacters();
+    _getCharacters();
+  }
+
+ Future<void> _getCharacters() async {
+    changeLoading();
+    _characters = await _service.getCharacters(); 
+    changeLoading(); 
   }
 
   @override
