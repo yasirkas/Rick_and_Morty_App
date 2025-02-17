@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/models/character_model.dart';
+import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
 
 class CharacterDetails extends StatelessWidget {
   const CharacterDetails({super.key, required this.character});

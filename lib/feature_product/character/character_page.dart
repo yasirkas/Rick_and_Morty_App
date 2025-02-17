@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/models/character_model.dart';
-import 'package:rick_and_morty_app/pages/character/character_details.dart';
-import 'package:rick_and_morty_app/statics/static_texts.dart';
+import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
+import 'package:rick_and_morty_app/feature_product/character/character_details.dart';
+import 'package:rick_and_morty_app/feature_product/utility/loading_mixin.dart';
+import 'package:rick_and_morty_app/feature_product/utility/static_texts.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
@@ -13,20 +14,13 @@ class CharacterPage extends StatefulWidget {
   State<CharacterPage> createState() => _CharacterPageState();
 }
 
-class _CharacterPageState extends State<CharacterPage> {
-  List<CharacterModel>? _items;
-  bool _isLoading = false;
+class _CharacterPageState extends State<CharacterPage>
+    with LoadingMixin<CharacterPage> {
+  List<CharacterModel>? _characters;
   late final Dio _dio;
   final _baseUrl = 'https://rickandmortyapi.com/api';
 
-  void changeLoading() {
-    setState(() {
-      _isLoading = !_isLoading;
-    });
-  }
-
-  // characterleri getir
-  Future<void> fetchGetItems() async {
+  Future<void> getCharacters() async {
     changeLoading();
     final response = await _dio.get('/character');
 
@@ -36,7 +30,7 @@ class _CharacterPageState extends State<CharacterPage> {
       if (datas is Map<String, dynamic>) {
         final characterModel = datas['results'] as List<dynamic>;
         setState(() {
-          _items =
+          _characters =
               characterModel.map((e) => CharacterModel.fromJson(e)).toList();
         });
       }
@@ -48,7 +42,7 @@ class _CharacterPageState extends State<CharacterPage> {
   void initState() {
     super.initState();
     _dio = Dio(BaseOptions(baseUrl: _baseUrl));
-    fetchGetItems();
+    getCharacters();
   }
 
   @override
@@ -57,16 +51,16 @@ class _CharacterPageState extends State<CharacterPage> {
       appBar: AppBar(
         centerTitle: true,
         foregroundColor: Colors.white,
-        title: Text("Main Page"),
-        backgroundColor: Colors.blueGrey,
+        title: Text("Characters Page"),
+        backgroundColor: Colors.blueAccent,
         actions: [
-          _isLoading ? CircularProgressIndicator.adaptive() : SizedBox.shrink()
+          isLoading ? CircularProgressIndicator.adaptive() : SizedBox.shrink()
         ],
       ),
       body: ListView.builder(
-        itemCount: _items?.length ?? 0,
+        itemCount: _characters?.length ?? 0,
         itemBuilder: (context, index) {
-          return _CharacterCard(model: _items?[index]);
+          return _CharacterCard(model: _characters?[index]);
         },
       ),
     );

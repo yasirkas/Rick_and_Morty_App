@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/pages/character/character_page.dart';
+import 'package:rick_and_morty_app/feature_product/home_page_.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rick and Morty App',
       theme: ThemeData.light(),
-      home: CharacterPage(),
+      home: HomePage(),
     );
   }
 }
