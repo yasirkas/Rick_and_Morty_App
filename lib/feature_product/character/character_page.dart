@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_details.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
-import 'package:rick_and_morty_app/feature_product/utility/loading_mixin.dart';
-import 'package:rick_and_morty_app/feature_product/utility/static_texts.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
@@ -12,8 +10,7 @@ class CharacterPage extends StatefulWidget {
   State<CharacterPage> createState() => _CharacterPageState();
 }
 
-class _CharacterPageState extends State<CharacterPage>
-    with LoadingMixin<CharacterPage> {
+class _CharacterPageState extends State<CharacterPage> {
   List<CharacterModel>? _characters;
   final Service _service = Service();
 
@@ -24,9 +21,8 @@ class _CharacterPageState extends State<CharacterPage>
   }
 
   Future<void> _getCharacters() async {
-    changeLoading();
     _characters = await _service.getCharacters();
-    changeLoading();
+    setState(() {});
   }
 
   @override
@@ -34,95 +30,56 @@ class _CharacterPageState extends State<CharacterPage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        foregroundColor: Colors.white,
-        title: Text("Characters Page"),
-        backgroundColor: Colors.blueAccent,
-        actions: [
-          isLoading ? CircularProgressIndicator.adaptive() : SizedBox.shrink()
-        ],
+        title: const Text("Characters"),
+        backgroundColor: Colors.orangeAccent,
       ),
-      body: ListView.builder(
-        itemCount: _characters?.length ?? 0,
-        itemBuilder: (context, index) {
-          return _CharacterCard(model: _characters?[index]);
-        },
-      ),
-    );
-  }
-}
-
-class _CharacterCard extends StatelessWidget {
-  const _CharacterCard({
-    required CharacterModel? model,
-  }) : _model = model;
-
-  final CharacterModel? _model;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        if (_model != null) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CharacterDetails(character: _model),
-            ),
-          );
-        }
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          color: Colors.blueGrey,
-          child: Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
-                child: Image.network(
-                  _model?.image ?? '',
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 4),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        _model?.name ?? '',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+      body: _characters == null
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: _characters?.length ?? 0,
+              itemBuilder: (context, index) {
+                final character = _characters?[index];
+                return Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(character?.image ?? ''),
+                    ),
+                    title: Text(
+                      character?.name ?? '',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            size: 12,
-                            color: (_model?.status == 'Alive')
-                                ? Colors.green
-                                : (_model?.status == 'Dead')
-                                    ? Colors.red
-                                    : Colors.grey,
-                          ),
-                          Text(
-                              '${_model?.status ?? ''} - ${_model?.species ?? ''}'),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                          '${StaticTexts.cardFirstSubtitle}:\n${_model?.location?.name ?? ''}'),
-                      SizedBox(height: 12),
-                      Text(
-                          '${StaticTexts.cardSecondSubtitle}:\n${_model?.origin?.name ?? ''}'),
-                    ],
+                    ),
+                    subtitle: Row(
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          size: 12,
+                          color: (character?.status == 'Alive')
+                              ? Colors.green
+                              : (character?.status == 'Dead')
+                                  ? Colors.red
+                                  : Colors.grey,
+                        ),
+                        const SizedBox(width: 6),
+                        Text('${character?.status} - ${character?.species}'),
+                      ],
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              CharacterDetails(character: character!),
+                        ),
+                      );
+                    },
                   ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+                );
+              },
+            ),
     );
   }
 }

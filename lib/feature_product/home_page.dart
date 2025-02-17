@@ -28,12 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Rick and Morty App"),
-        backgroundColor: Colors.blueGrey,
-        foregroundColor: Colors.white,
-        centerTitle: true,
-      ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,

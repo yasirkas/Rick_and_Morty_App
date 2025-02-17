@@ -8,50 +8,63 @@ class CharacterDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey.shade50, // Açık ton arka plan
       appBar: AppBar(
         title: Text(character.name ?? ''),
-        backgroundColor: Colors.blueGrey,
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.lightBlue.shade200,
+        foregroundColor: Colors.black,
+        elevation: 2,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: Image.network(
-                character.image ?? '',
-                width: 200,
-                height: 200,
-                fit: BoxFit.cover,
+            CircleAvatar(
+              radius: 80,
+              backgroundImage: NetworkImage(character.image ?? ''),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              character.name ?? '',
+              style: const TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
-            Text(
-              'Species: ${character.species}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Gender: ${character.gender}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Location: ${character.location?.name}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Origin: ${character.origin?.name}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Episodes: ${character.episode?.length}',
-              style: TextStyle(fontSize: 18),
-            ),
+            const SizedBox(height: 20),
+
+            // Bilgi Kartları
+            _infoCard(Icons.person, "Species", character.species),
+            _infoCard(Icons.male, "Gender", character.gender),
+            _infoCard(Icons.location_on, "Location", character.location?.name),
+            _infoCard(Icons.public, "Origin", character.origin?.name),
+            _infoCard(
+                Icons.tv, "Episodes", character.episode?.length.toString()),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _infoCard(IconData icon, String title, String? value) {
+    return Card(
+      color: Colors.white,
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 3,
+      child: ListTile(
+        leading: Icon(icon, color: Colors.blueGrey.shade800),
+        title: Text(
+          title,
+          style: TextStyle(color: Colors.blueGrey.shade700, fontSize: 14),
+        ),
+        subtitle: Text(
+          value ?? 'Unknown',
+          style: const TextStyle(
+              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
         ),
       ),
     );
