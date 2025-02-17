@@ -34,27 +34,58 @@ class _LocationPageState extends State<LocationPage>
       appBar: AppBar(
         centerTitle: true,
         foregroundColor: Colors.white,
-        title: Text("Locations Page"),
-        backgroundColor: Colors.blueAccent,
+        title: const Text("Locations"),
+        backgroundColor: Colors.greenAccent,
         actions: [
-          isLoading ? CircularProgressIndicator.adaptive() : SizedBox.shrink()
+          isLoading
+              ? const CircularProgressIndicator.adaptive()
+              : const SizedBox.shrink()
         ],
       ),
-      body: ListView.builder(
-        itemCount: _locations?.length ?? 0,
-        itemBuilder: (context, index) {
-          final location = _locations?[index];
-          return ListTile(
-            title: Text(location?.name ?? ''),
-            onTap: () {
-              if (location != null) {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => LocationDetails(location: location)));
-              }
-            },
-          );
-        },
-      ),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : _locations == null
+              ? const Center(child: Text('No locations found.'))
+              : ListView.builder(
+                  padding: const EdgeInsets.all(8.0),
+                  itemCount: _locations?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final location = _locations?[index];
+                    return Card(
+                      elevation: 5,
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.all(16.0),
+                        leading: Icon(
+                          Icons.location_on,
+                          size: 40,
+                          color: Colors.greenAccent,
+                        ),
+                        title: Text(
+                          location?.name ?? '',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        subtitle: Text(location?.type ?? 'No type available'),
+                        trailing: const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.greenAccent,
+                        ),
+                        onTap: () {
+                          if (location != null) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  LocationDetails(location: location),
+                            ));
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
     );
   }
 }

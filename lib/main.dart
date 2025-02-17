@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/feature_product/home_page_.dart';
+import 'package:rick_and_morty_app/feature_product/home_page.dart';
 
 void main() {
   runApp(const MyApp());

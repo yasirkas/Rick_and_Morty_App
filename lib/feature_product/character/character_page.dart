@@ -23,10 +23,10 @@ class _CharacterPageState extends State<CharacterPage>
     _getCharacters();
   }
 
- Future<void> _getCharacters() async {
+  Future<void> _getCharacters() async {
     changeLoading();
-    _characters = await _service.getCharacters(); 
-    changeLoading(); 
+    _characters = await _service.getCharacters();
+    changeLoading();
   }
 
   @override

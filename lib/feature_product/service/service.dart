@@ -67,4 +67,21 @@ class Service {
     }
     return null;
   }
+
+  // Service for Character URLs in Episode or Location
+  Future<CharacterModel?> getCharacter(String url) async {
+    try {
+      final response = await _dio.get(url);
+
+      if (response.statusCode == HttpStatus.ok) {
+        final data = response.data;
+        if (data is Map<String, dynamic>) {
+          return CharacterModel.fromJson(data);
+        }
+      }
+    } catch (e) {
+      throw Exception("An error occurred while retrieving episode data: $e");
+    }
+    return null;
+  }
 }

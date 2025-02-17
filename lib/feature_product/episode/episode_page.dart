@@ -34,28 +34,59 @@ class _EpisodePageState extends State<EpisodePage>
       appBar: AppBar(
         centerTitle: true,
         foregroundColor: Colors.white,
-        title: Text("Episodes Page"),
+        title: const Text("Episodes"),
         backgroundColor: Colors.blueAccent,
         actions: [
-          isLoading ? CircularProgressIndicator.adaptive() : SizedBox.shrink()
+          isLoading
+              ? const CircularProgressIndicator.adaptive()
+              : const SizedBox.shrink()
         ],
       ),
-      body: ListView.builder(
-        itemCount: _episodes?.length ?? 0,
-        itemBuilder: (context, index) {
-          final episode = _episodes?[index];
-          return ListTile(
-            title: Text(episode?.name ?? ''),
-            onTap: () {
-              if (episode != null) {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => EpisodeDetails(episode: episode),
-                ));
-              }
-            },
-          );
-        },
-      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : _episodes == null
+              ? Center(child: Text('No episodes found.'))
+              : ListView.builder(
+                  padding: const EdgeInsets.all(8.0),
+                  itemCount: _episodes?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final episode = _episodes?[index];
+                    return Card(
+                      elevation: 5,
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.all(16.0),
+                        leading: Icon(
+                          Icons.movie_creation,
+                          size: 40,
+                          color: Colors.blueAccent,
+                        ),
+                        title: Text(
+                          episode?.name ?? '',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        subtitle:
+                            Text(episode?.airDate ?? 'No air date available'),
+                        trailing: const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.blueAccent,
+                        ),
+                        onTap: () {
+                          if (episode != null) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  EpisodeDetails(episode: episode),
+                            ));
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
     );
   }
 }
