@@ -36,14 +36,9 @@ class _EpisodePageState extends State<EpisodePage>
         foregroundColor: Colors.white,
         title: const Text("Episodes"),
         backgroundColor: Colors.blueAccent,
-        actions: [
-          isLoading
-              ? const CircularProgressIndicator.adaptive()
-              : const SizedBox.shrink()
-        ],
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : _episodes == null
               ? Center(child: Text('No episodes found.'))
               : ListView.builder(

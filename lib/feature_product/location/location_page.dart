@@ -36,14 +36,9 @@ class _LocationPageState extends State<LocationPage>
         foregroundColor: Colors.white,
         title: const Text("Locations"),
         backgroundColor: Colors.green,
-        actions: [
-          isLoading
-              ? const CircularProgressIndicator.adaptive()
-              : const SizedBox.shrink()
-        ],
       ),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : _locations == null
               ? const Center(child: Text('No locations found.'))
               : ListView.builder(

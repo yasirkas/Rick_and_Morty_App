@@ -131,9 +131,9 @@ class LocationDetails extends StatelessWidget {
       color: Colors.grey.shade300,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: const ListTile(
-        leading: CircularProgressIndicator(),
-        title: Text(
+      child: ListTile(
+        leading: Image.asset('assets/gif/portal_loading.gif'),
+        title: const Text(
           'Loading...',
           style: TextStyle(color: Colors.black87),
         ),

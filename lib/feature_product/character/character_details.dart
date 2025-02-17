@@ -35,9 +35,9 @@ class CharacterDetails extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-
             _infoCard(Icons.person, "Species", character.species),
-            _infoCard(Icons.male, "Gender", character.gender),
+            _infoCard((character.gender == 'Male' ? Icons.male : character.gender == 'Female' ? Icons.female : Icons.question_mark),
+                "Gender", character.gender),
             _infoCard(Icons.location_on, "Location", character.location?.name),
             _infoCard(Icons.public, "Origin", character.origin?.name),
             _infoCard(

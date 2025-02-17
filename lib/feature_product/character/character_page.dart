@@ -35,7 +35,7 @@ class _CharacterPageState extends State<CharacterPage> {
         foregroundColor: Colors.white,
       ),
       body: _characters == null
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : ListView.builder(
               itemCount: _characters?.length ?? 0,
               itemBuilder: (context, index) {

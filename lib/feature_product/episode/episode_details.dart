@@ -12,13 +12,13 @@ class EpisodeDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200, // Açık gri arka plan
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: Text(
           episode.name ?? '',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue.shade300, // Açık mavi ton
+        backgroundColor: Colors.blue.shade300,
         foregroundColor: Colors.white,
         elevation: 0,
       ),
@@ -68,7 +68,7 @@ class EpisodeDetails extends StatelessWidget {
   // Bilgi Kartı
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
-      color: Colors.blueGrey.shade100, // Açık mavi-gri tonları
+      color: Colors.blueGrey.shade100,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
@@ -88,7 +88,7 @@ class EpisodeDetails extends StatelessWidget {
 
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
-      color: Colors.white, 
+      color: Colors.white,
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -135,8 +135,8 @@ class EpisodeDetails extends StatelessWidget {
       color: Colors.grey.shade300,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: const ListTile(
-        leading: CircularProgressIndicator(),
+      child: ListTile(
+        leading: Image.asset('assets/gif/portal_loading.gif'),
         title: Text(
           'Loading...',
           style: TextStyle(color: Colors.black87),
@@ -144,7 +144,6 @@ class EpisodeDetails extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _errorCard() {
     return Card(
