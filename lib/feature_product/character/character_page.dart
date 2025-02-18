@@ -31,7 +31,7 @@ class _CharacterPageState extends State<CharacterPage> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Characters"),
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
       body: _characters == null

@@ -11,7 +11,7 @@ class CharacterDetails extends StatelessWidget {
       backgroundColor: Colors.blueGrey.shade50,
       appBar: AppBar(
         title: Text(character.name ?? ''),
-        backgroundColor: Colors.orange.shade200,
+        backgroundColor: Colors.blue.shade300,
         foregroundColor: Colors.white,
         elevation: 2,
       ),
@@ -36,8 +36,14 @@ class CharacterDetails extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             _infoCard(Icons.person, "Species", character.species),
-            _infoCard((character.gender == 'Male' ? Icons.male : character.gender == 'Female' ? Icons.female : Icons.question_mark),
-                "Gender", character.gender),
+            _infoCard(
+                (character.gender == 'Male'
+                    ? Icons.male
+                    : character.gender == 'Female'
+                        ? Icons.female
+                        : Icons.question_mark),
+                "Gender",
+                character.gender),
             _infoCard(Icons.location_on, "Location", character.location?.name),
             _infoCard(Icons.public, "Origin", character.origin?.name),
             _infoCard(

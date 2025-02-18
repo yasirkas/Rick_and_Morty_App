@@ -18,7 +18,7 @@ class EpisodeDetails extends StatelessWidget {
           episode.name ?? '',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue.shade300,
+        backgroundColor: Colors.orange.shade300,
         foregroundColor: Colors.white,
         elevation: 0,
       ),

@@ -35,7 +35,7 @@ class _EpisodePageState extends State<EpisodePage>
         centerTitle: true,
         foregroundColor: Colors.white,
         title: const Text("Episodes"),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.orangeAccent,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
