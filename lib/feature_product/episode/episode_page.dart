@@ -64,7 +64,7 @@ class _EpisodePageState extends State<EpisodePage>
                           ),
                         ),
                         subtitle:
-                            Text(episode?.airDate ?? 'No air date available'),
+                            Text(episode?.episode ?? 'No episode available'),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
                           size: 20,

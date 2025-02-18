@@ -32,17 +32,26 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.people),
+              icon: Image.asset(
+                'assets/icon/characters_icon.png',
+                width: 30,
+              ),
               label: 'Characters',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.location_on),
+              icon: Image.asset(
+                'assets/icon/locations_icon.png',
+                width: 30,
+              ),
               label: 'Locations',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.video_library),
+              icon: Image.asset(
+                'assets/icon/episodes_icon.png',
+                width: 30,
+              ),
               label: 'Episodes',
             ),
           ]),
