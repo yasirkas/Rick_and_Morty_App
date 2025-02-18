@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature_product/location/location_details.dart';
 import 'package:rick_and_morty_app/feature_product/location/location_model.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
@@ -34,9 +35,9 @@ class _LocationPageState extends State<LocationPage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        foregroundColor: Colors.white,
+        foregroundColor: StaticColors().locationPageFGColor,
         title: Text(StaticTexts().locationsPageTitle),
-        backgroundColor: Colors.green,
+        backgroundColor: StaticColors().locationPageBGColor,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
@@ -55,21 +56,25 @@ class _LocationPageState extends State<LocationPage>
                         leading: Icon(
                           Icons.location_on,
                           size: 40,
-                          color: Colors.greenAccent,
+                          color: StaticColors().locationPageIconColor,
                         ),
                         title: Text(
                           location?.name ?? '',
-                          style: const TextStyle(
+                          style: TextStyle(
+                            color: StaticColors().locationPageNameColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
                         subtitle: Text(
-                            location?.type ?? StaticTexts().noTypeAvailable),
-                        trailing: const Icon(
+                          location?.type ?? StaticTexts().noTypeAvailable,
+                          style: TextStyle(
+                              color: StaticColors().locationPageSubtitleColor),
+                        ),
+                        trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: 20,
-                          color: Colors.greenAccent,
+                          color: StaticColors().locationPageArrowColor,
                         ),
                         onTap: () {
                           if (location != null) {

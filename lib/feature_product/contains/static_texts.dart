@@ -13,13 +13,12 @@ class StaticTexts {
   final String location = 'Location';
   final String origin = 'Origin';
   final String episodes = 'Episodes';
+  final String noCharactersAvailable =
+      'No characters available for this episode.';
 
   // Common feature
   final String unknown = 'Unknown';
   final String loading = 'Loading...';
-  final String errorLoadingCharacter = 'Error loading character';
-  final String noDataAvailable = 'No data available';
-
   //Location Page
   final String locationsPageTitle = 'Locations';
   final String type = 'Type';
@@ -27,6 +26,8 @@ class StaticTexts {
   final String residents = 'Residents';
   final String noLocationsFound = 'No locations found.';
   final String noTypeAvailable = 'No type available';
+  final String noResidentsAvailable =
+      'No residents available for this location.';
 
   //Episodes Page
   final String episodesPageTitle = 'Episodes';

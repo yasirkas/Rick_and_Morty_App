@@ -33,8 +33,8 @@ class _CharacterPageState extends State<CharacterPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(StaticTexts().charactersPageTitle),
-        backgroundColor: StaticColors().characterBGColor,
-        foregroundColor: StaticColors().characterFGColor,
+        backgroundColor: StaticColors().characterPageBGColor,
+        foregroundColor: StaticColors().characterPageFGColor,
       ),
       body: _characters == null
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
@@ -51,7 +51,8 @@ class _CharacterPageState extends State<CharacterPage> {
                     ),
                     title: Text(
                       character?.name ?? '',
-                      style: const TextStyle(
+                      style: TextStyle(
+                        color: StaticColors().characterNameColor,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -62,13 +63,17 @@ class _CharacterPageState extends State<CharacterPage> {
                           Icons.circle,
                           size: 12,
                           color: (character?.status == 'Alive')
-                              ? StaticColors().characterAlive
+                              ? StaticColors().characterAliveColor
                               : (character?.status == 'Dead')
-                                  ? StaticColors().characterDead
-                                  : StaticColors().characterUnknown,
+                                  ? StaticColors().characterDeadColor
+                                  : StaticColors().characterUnknownColor,
                         ),
                         const SizedBox(width: 6),
-                        Text('${character?.status} - ${character?.species}'),
+                        Text(
+                          '${character?.status} - ${character?.species}',
+                          style: TextStyle(
+                              color: StaticColors().characterSubtitleColor),
+                        ),
                       ],
                     ),
                     onTap: () {

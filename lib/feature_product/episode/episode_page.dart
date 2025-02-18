@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature_product/episode/episode_details.dart';
 import 'package:rick_and_morty_app/feature_product/episode/episode_model.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
@@ -34,9 +35,9 @@ class _EpisodePageState extends State<EpisodePage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        foregroundColor: Colors.white,
+        foregroundColor: StaticColors().episodePageFGColor,
         title: Text(StaticTexts().episodesPageTitle),
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: StaticColors().episodePageBGColor,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
@@ -55,21 +56,25 @@ class _EpisodePageState extends State<EpisodePage>
                         leading: Icon(
                           Icons.movie_creation,
                           size: 40,
-                          color: Colors.blueAccent,
+                          color: StaticColors().episodePageIconColor,
                         ),
                         title: Text(
                           episode?.name ?? '',
-                          style: const TextStyle(
+                          style: TextStyle(
+                            color: StaticColors().episodePageNameColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
-                        subtitle: Text(episode?.episode ??
-                            StaticTexts().noEpisodeAvailable),
-                        trailing: const Icon(
+                        subtitle: Text(
+                          episode?.episode ?? StaticTexts().noEpisodeAvailable,
+                          style: TextStyle(
+                              color: StaticColors().episodePageSubtitleColor),
+                        ),
+                        trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: 20,
-                          color: Colors.blueAccent,
+                          color: StaticColors().episodePageArrowColor,
                         ),
                         onTap: () {
                           if (episode != null) {

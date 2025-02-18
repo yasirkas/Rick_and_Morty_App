@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class CharacterDetails extends StatelessWidget {
@@ -9,11 +10,11 @@ class CharacterDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey.shade50,
+      backgroundColor: StaticColors().characterDetailsGeneralBGColor,
       appBar: AppBar(
         title: Text(character.name ?? ''),
-        backgroundColor: Colors.blue.shade300,
-        foregroundColor: Colors.white,
+        backgroundColor: StaticColors().characterDetailsBGColor,
+        foregroundColor: StaticColors().characterDetailsFGColor,
         elevation: 2,
       ),
       body: SingleChildScrollView(
@@ -28,10 +29,10 @@ class CharacterDetails extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               character.name ?? '',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: StaticColors().characterDetailsNameColor,
               ),
               textAlign: TextAlign.center,
             ),
@@ -64,15 +65,18 @@ class CharacterDetails extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 3,
       child: ListTile(
-        leading: Icon(icon, color: Colors.blueGrey.shade800),
+        leading: Icon(icon, color: StaticColors().characterDetailsIconColor),
         title: Text(
           title,
-          style: TextStyle(color: Colors.blueGrey.shade700, fontSize: 14),
+          style: TextStyle(
+              color: StaticColors().characterDetailsTitleColor, fontSize: 14),
         ),
         subtitle: Text(
           value ?? StaticTexts().unknown,
-          style: const TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: StaticColors().characterDetailsSubtitleColor),
         ),
       ),
     );
