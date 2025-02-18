@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_details.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
@@ -30,9 +32,9 @@ class _CharacterPageState extends State<CharacterPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Characters"),
-        backgroundColor: Colors.blueAccent,
-        foregroundColor: Colors.white,
+        title: Text(StaticTexts().charactersPageTitle),
+        backgroundColor: StaticColors().characterBGColor,
+        foregroundColor: StaticColors().characterFGColor,
       ),
       body: _characters == null
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
@@ -60,10 +62,10 @@ class _CharacterPageState extends State<CharacterPage> {
                           Icons.circle,
                           size: 12,
                           color: (character?.status == 'Alive')
-                              ? Colors.green
+                              ? StaticColors().characterAlive
                               : (character?.status == 'Dead')
-                                  ? Colors.red
-                                  : Colors.grey,
+                                  ? StaticColors().characterDead
+                                  : StaticColors().characterUnknown,
                         ),
                         const SizedBox(width: 6),
                         Text('${character?.status} - ${character?.species}'),

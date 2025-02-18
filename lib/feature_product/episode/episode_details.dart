@@ -3,6 +3,7 @@ import 'package:rick_and_morty_app/feature_product/character/character_details.d
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
 import 'package:rick_and_morty_app/feature_product/episode/episode_model.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class EpisodeDetails extends StatelessWidget {
   EpisodeDetails({super.key, required this.episode});
@@ -27,12 +28,13 @@ class EpisodeDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _infoCard(Icons.calendar_today, "Air Date", episode.airDate),
-            _infoCard(Icons.video_library, "Episode", episode.episode),
-
+            _infoCard(
+                Icons.calendar_today, StaticTexts().airDate, episode.airDate),
+            _infoCard(
+                Icons.video_library, StaticTexts().episode, episode.episode),
             const SizedBox(height: 16),
             Text(
-              'Characters:',
+              StaticTexts().characters,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -40,8 +42,6 @@ class EpisodeDetails extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-
-            // Karakter Listesi
             ...episode.characters!.map((characterUrl) {
               return FutureBuilder<CharacterModel?>(
                 future: _service.getCharacter(characterUrl),
@@ -65,7 +65,6 @@ class EpisodeDetails extends StatelessWidget {
     );
   }
 
-  // Bilgi Kartı
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
       color: Colors.blueGrey.shade100,
@@ -78,7 +77,7 @@ class EpisodeDetails extends StatelessWidget {
           style: TextStyle(color: Colors.blueGrey.shade600, fontSize: 14),
         ),
         subtitle: Text(
-          value ?? 'Unknown',
+          value ?? StaticTexts().unknown,
           style: TextStyle(
               fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
         ),
@@ -138,7 +137,7 @@ class EpisodeDetails extends StatelessWidget {
       child: ListTile(
         leading: Image.asset('assets/gif/portal_loading.gif'),
         title: Text(
-          'Loading...',
+          StaticTexts().loading,
           style: TextStyle(color: Colors.black87),
         ),
       ),
@@ -150,9 +149,9 @@ class EpisodeDetails extends StatelessWidget {
       color: Colors.red.shade100,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: const ListTile(
+      child: ListTile(
         title: Text(
-          'Error loading character',
+          StaticTexts().errorLoadingCharacter,
           style: TextStyle(color: Colors.black87),
         ),
       ),
@@ -164,9 +163,9 @@ class EpisodeDetails extends StatelessWidget {
       color: Colors.grey.shade300,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: const ListTile(
+      child: ListTile(
         title: Text(
-          'No data available',
+          StaticTexts().noDataAvailable,
           style: TextStyle(color: Colors.black87),
         ),
       ),

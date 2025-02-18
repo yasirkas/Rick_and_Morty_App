@@ -3,6 +3,7 @@ import 'package:rick_and_morty_app/feature_product/episode/episode_details.dart'
 import 'package:rick_and_morty_app/feature_product/episode/episode_model.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
 import 'package:rick_and_morty_app/feature_product/utility/loading_mixin.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class EpisodePage extends StatefulWidget {
   const EpisodePage({super.key});
@@ -34,13 +35,13 @@ class _EpisodePageState extends State<EpisodePage>
       appBar: AppBar(
         centerTitle: true,
         foregroundColor: Colors.white,
-        title: const Text("Episodes"),
+        title: Text(StaticTexts().episodesPageTitle),
         backgroundColor: Colors.orangeAccent,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : _episodes == null
-              ? Center(child: Text('No episodes found.'))
+              ? Center(child: Text(StaticTexts().noEpisodesFound))
               : ListView.builder(
                   padding: const EdgeInsets.all(8.0),
                   itemCount: _episodes?.length ?? 0,
@@ -63,8 +64,8 @@ class _EpisodePageState extends State<EpisodePage>
                             fontSize: 18,
                           ),
                         ),
-                        subtitle:
-                            Text(episode?.episode ?? 'No episode available'),
+                        subtitle: Text(episode?.episode ??
+                            StaticTexts().noEpisodeAvailable),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
                           size: 20,

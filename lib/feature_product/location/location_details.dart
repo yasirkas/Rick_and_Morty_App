@@ -3,6 +3,7 @@ import 'package:rick_and_morty_app/feature_product/character/character_details.d
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
 import 'package:rick_and_morty_app/feature_product/location/location_model.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class LocationDetails extends StatelessWidget {
   LocationDetails({super.key, required this.location});
@@ -27,11 +28,12 @@ class LocationDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _infoCard(Icons.public, "Type", location.type),
-            _infoCard(Icons.location_on, "Dimension", location.dimension),
+            _infoCard(Icons.public, StaticTexts().type, location.type),
+            _infoCard(
+                Icons.location_on, StaticTexts().dimension, location.dimension),
             const SizedBox(height: 16),
             Text(
-              'Residents',
+              StaticTexts().residents,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -74,7 +76,7 @@ class LocationDetails extends StatelessWidget {
           style: TextStyle(color: Colors.blueGrey.shade600, fontSize: 14),
         ),
         subtitle: Text(
-          value ?? 'Unknown',
+          value ?? StaticTexts().unknown,
           style: TextStyle(
               fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
         ),
@@ -133,8 +135,8 @@ class LocationDetails extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Image.asset('assets/gif/portal_loading.gif'),
-        title: const Text(
-          'Loading...',
+        title: Text(
+          StaticTexts().loading,
           style: TextStyle(color: Colors.black87),
         ),
       ),
@@ -146,9 +148,9 @@ class LocationDetails extends StatelessWidget {
       color: Colors.red.shade100,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: const ListTile(
+      child: ListTile(
         title: Text(
-          'Error loading character',
+          StaticTexts().errorLoadingCharacter,
           style: TextStyle(color: Colors.black87),
         ),
       ),
@@ -160,9 +162,9 @@ class LocationDetails extends StatelessWidget {
       color: Colors.grey.shade300,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: const ListTile(
+      child: ListTile(
         title: Text(
-          'No data available',
+          StaticTexts().noDataAvailable,
           style: TextStyle(color: Colors.black87),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:rick_and_morty_app/feature_product/location/location_details.dar
 import 'package:rick_and_morty_app/feature_product/location/location_model.dart';
 import 'package:rick_and_morty_app/feature_product/service/service.dart';
 import 'package:rick_and_morty_app/feature_product/utility/loading_mixin.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});
@@ -34,13 +35,13 @@ class _LocationPageState extends State<LocationPage>
       appBar: AppBar(
         centerTitle: true,
         foregroundColor: Colors.white,
-        title: const Text("Locations"),
+        title: Text(StaticTexts().locationsPageTitle),
         backgroundColor: Colors.green,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : _locations == null
-              ? const Center(child: Text('No locations found.'))
+              ? Center(child: Text(StaticTexts().noLocationsFound))
               : ListView.builder(
                   padding: const EdgeInsets.all(8.0),
                   itemCount: _locations?.length ?? 0,
@@ -63,7 +64,8 @@ class _LocationPageState extends State<LocationPage>
                             fontSize: 18,
                           ),
                         ),
-                        subtitle: Text(location?.type ?? 'No type available'),
+                        subtitle: Text(
+                            location?.type ?? StaticTexts().noTypeAvailable),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
                           size: 20,

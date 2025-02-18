@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class CharacterDetails extends StatelessWidget {
   const CharacterDetails({super.key, required this.character});
@@ -35,19 +36,21 @@ class CharacterDetails extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            _infoCard(Icons.person, "Species", character.species),
+            _infoCard(Icons.person, StaticTexts().species, character.species),
             _infoCard(
                 (character.gender == 'Male'
                     ? Icons.male
                     : character.gender == 'Female'
                         ? Icons.female
                         : Icons.question_mark),
-                "Gender",
+                StaticTexts().gender,
                 character.gender),
-            _infoCard(Icons.location_on, "Location", character.location?.name),
-            _infoCard(Icons.public, "Origin", character.origin?.name),
+            _infoCard(Icons.location_on, StaticTexts().location,
+                character.location?.name),
             _infoCard(
-                Icons.tv, "Episodes", character.episode?.length.toString()),
+                Icons.public, StaticTexts().origin, character.origin?.name),
+            _infoCard(Icons.tv, StaticTexts().episodes,
+                character.episode?.length.toString()),
           ],
         ),
       ),
@@ -67,7 +70,7 @@ class CharacterDetails extends StatelessWidget {
           style: TextStyle(color: Colors.blueGrey.shade700, fontSize: 14),
         ),
         subtitle: Text(
-          value ?? 'Unknown',
+          value ?? StaticTexts().unknown,
           style: const TextStyle(
               fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
         ),

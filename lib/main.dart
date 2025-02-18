@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/utility/splash_screen.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'R&M App',
+      title: StaticTexts().mainTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
       home: SplashScreen(),

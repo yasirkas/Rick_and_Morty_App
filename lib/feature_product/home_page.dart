@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature_product/character/character_page.dart';
 import 'package:rick_and_morty_app/feature_product/episode/episode_page.dart';
 import 'package:rick_and_morty_app/feature_product/location/location_page.dart';
+import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,21 +39,21 @@ class _HomePageState extends State<HomePage> {
                 'assets/icon/characters_icon.png',
                 width: 30,
               ),
-              label: 'Characters',
+              label: StaticTexts().navCharacters,
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/icon/locations_icon.png',
                 width: 30,
               ),
-              label: 'Locations',
+              label: StaticTexts().navLocations,
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/icon/episodes_icon.png',
                 width: 30,
               ),
-              label: 'Episodes',
+              label: StaticTexts().navEpisodes,
             ),
           ]),
     );
