@@ -4,6 +4,8 @@ import 'package:rick_and_morty_app/feature/character/character_model/character_m
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_margins.dart';
+import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class LocationDetails extends StatelessWidget {
@@ -25,7 +27,7 @@ class LocationDetails extends StatelessWidget {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: StaticPaddings.locationDetailsBodyPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -67,7 +69,7 @@ class LocationDetails extends StatelessWidget {
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
       color: StaticColors.locationDetailsInfoCardBGColor,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.locationDetailsInfoCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Icon(icon, color: StaticColors.locationDetailsIconColor),
@@ -91,7 +93,7 @@ class LocationDetails extends StatelessWidget {
     return Card(
       color: StaticColors.locationDetailsCharacterCardColor,
       elevation: 2,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.locationDetailsCharacterCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: CircleAvatar(
@@ -138,7 +140,7 @@ class LocationDetails extends StatelessWidget {
   Widget _loadingCard() {
     return Card(
       color: StaticColors.loadingCardColor,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.locationDetailsLoadingCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Image.asset('assets/gif/portal_loading.gif'),
@@ -153,7 +155,7 @@ class LocationDetails extends StatelessWidget {
   Widget _noResidentsCard() {
     return Card(
       color: StaticColors.noResidentsCardColor,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.locationDetailsNoResidentsCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         title: Text(

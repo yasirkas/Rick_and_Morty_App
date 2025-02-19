@@ -3,6 +3,7 @@ import 'package:rick_and_morty_app/feature/character/character_model/character_m
 import 'package:rick_and_morty_app/feature/character/character_view/character_details.dart';
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class CharacterPage extends StatefulWidget {
@@ -43,8 +44,7 @@ class _CharacterPageState extends State<CharacterPage> {
               itemBuilder: (context, index) {
                 final character = _characters?[index];
                 return Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  margin: StaticMargins.characterPageMargin,
                   child: ListTile(
                     leading: CircleAvatar(
                       backgroundImage: NetworkImage(character?.image ?? ''),

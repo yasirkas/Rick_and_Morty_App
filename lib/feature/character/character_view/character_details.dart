@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/product/contains/static_margins.dart';
+import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class CharacterDetails extends StatelessWidget {
@@ -18,7 +20,7 @@ class CharacterDetails extends StatelessWidget {
         elevation: 2,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: StaticPaddings.characterDetailsBodyPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -48,8 +50,7 @@ class CharacterDetails extends StatelessWidget {
                 character.gender),
             _infoCard(Icons.location_on, StaticTexts.location,
                 character.location?.name),
-            _infoCard(
-                Icons.public, StaticTexts.origin, character.origin?.name),
+            _infoCard(Icons.public, StaticTexts.origin, character.origin?.name),
             _infoCard(Icons.tv, StaticTexts.episodes,
                 character.episode?.length.toString()),
           ],
@@ -61,7 +62,7 @@ class CharacterDetails extends StatelessWidget {
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
       color: Colors.white,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.characterDetailsMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 3,
       child: ListTile(

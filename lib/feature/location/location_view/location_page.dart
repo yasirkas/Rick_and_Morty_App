@@ -3,6 +3,8 @@ import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/location/location_view/location_details.dart';
 import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_margins.dart';
+import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
 import 'package:rick_and_morty_app/product/utility/loading_mixin.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
@@ -44,15 +46,16 @@ class _LocationPageState extends State<LocationPage>
           : _locations == null
               ? Center(child: Text(StaticTexts.noLocationsFound))
               : ListView.builder(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: StaticPaddings.locationListViewBuilderPadding,
                   itemCount: _locations?.length ?? 0,
                   itemBuilder: (context, index) {
                     final location = _locations?[index];
                     return Card(
                       elevation: 5,
-                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      margin: StaticMargins.locationPageMargin,
                       child: ListTile(
-                        contentPadding: const EdgeInsets.all(16.0),
+                        contentPadding:
+                            StaticPaddings.locationPageContendtPadding,
                         leading: Icon(
                           Icons.location_on,
                           size: 40,

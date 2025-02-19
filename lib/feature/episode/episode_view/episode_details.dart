@@ -4,6 +4,8 @@ import 'package:rick_and_morty_app/feature/character/character_model/character_m
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_margins.dart';
+import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class EpisodeDetails extends StatelessWidget {
@@ -25,7 +27,7 @@ class EpisodeDetails extends StatelessWidget {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: StaticPaddings.episodeDetailsBodyPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -68,7 +70,7 @@ class EpisodeDetails extends StatelessWidget {
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
       color: StaticColors.episodeDetailsInfoCardBGColor,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.episodeDetailsInfoCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Icon(icon, color: StaticColors.episodeDetailsIconColor),
@@ -92,7 +94,7 @@ class EpisodeDetails extends StatelessWidget {
     return Card(
       color: StaticColors.episodeDetailsCharacterCardColor,
       elevation: 2,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.episodeDetailsCharacterCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: CircleAvatar(
@@ -139,7 +141,7 @@ class EpisodeDetails extends StatelessWidget {
   Widget _loadingCard() {
     return Card(
       color: StaticColors.loadingCardColor,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.episodeDetailsLoadingCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Image.asset('assets/gif/portal_loading.gif'),
@@ -154,7 +156,7 @@ class EpisodeDetails extends StatelessWidget {
   Widget _noCharactersCard() {
     return Card(
       color: StaticColors.noCharactersCardColor,
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: StaticMargins.episodeDetailsNoCharacterCardMargin,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         title: Text(
