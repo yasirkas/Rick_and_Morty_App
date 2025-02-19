@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
+import 'package:rick_and_morty_app/feature/character/character_widgets/character_page_info_card.dart';
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
-import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
@@ -27,7 +27,8 @@ class CharacterDetails extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: StaticFontStyle.characterCircleAvatarRadius,
-              backgroundImage: NetworkImage(character.image ?? StaticTexts.noDataError),
+              backgroundImage:
+                  NetworkImage(character.image ?? StaticTexts.noDataError),
             ),
             SizedBox(height: StaticFontStyle.characterAndTitleSpaceBetween),
             Text(
@@ -41,47 +42,34 @@ class CharacterDetails extends StatelessWidget {
             ),
             SizedBox(
                 height: StaticFontStyle.characterPageNameAndCardSpaceBetween),
-            _infoCard(Icons.person, StaticTexts.species, character.species),
-            _infoCard(
-                (character.gender == StaticTexts.male
-                    ? Icons.male
-                    : character.gender == StaticTexts.female
-                        ? Icons.female
-                        : Icons.question_mark),
-                StaticTexts.gender,
-                character.gender),
-            _infoCard(Icons.location_on, StaticTexts.location,
-                character.location?.name),
-            _infoCard(Icons.public, StaticTexts.origin, character.origin?.name),
-            _infoCard(Icons.tv, StaticTexts.episodes,
-                character.episode?.length.toString()),
+            CharacterInfoCard(
+              icon: Icons.person,
+              title: StaticTexts.species,
+              value: character.species,
+            ),
+            CharacterInfoCard(
+              icon: (character.gender == StaticTexts.male
+                  ? Icons.male
+                  : character.gender == StaticTexts.female
+                      ? Icons.female
+                      : Icons.question_mark),
+              title: StaticTexts.gender,
+              value: character.gender,
+            ),
+            CharacterInfoCard(
+              icon: Icons.location_on,
+              title: StaticTexts.location,
+              value: character.location?.name,
+            ),
+            CharacterInfoCard(
+                icon: Icons.public,
+                title: StaticTexts.origin,
+                value: character.origin?.name),
+            CharacterInfoCard(
+                icon: Icons.tv,
+                title: StaticTexts.episodes,
+                value: character.episode?.length.toString()),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _infoCard(IconData icon, String title, String? value) {
-    return Card(
-      color: StaticColors.characterDetailsInfoCardBGColor,
-      margin: StaticMargins.characterDetailsMargin,
-      shape: RoundedRectangleBorder(
-          borderRadius: StaticFontStyle.characterDetailsInfoCardBorderRadius),
-      elevation: StaticFontStyle.characterDetailsPageInfoCardElevation,
-      child: ListTile(
-        leading: Icon(icon, color: StaticColors.characterDetailsIconColor),
-        title: Text(
-          title,
-          style: TextStyle(
-              color: StaticColors.characterDetailsTitleColor,
-              fontSize: StaticFontStyle.characterDetailsTitleSize),
-        ),
-        subtitle: Text(
-          value ?? StaticTexts.unknown,
-          style: TextStyle(
-              fontSize: StaticFontStyle.characterDetailsSubtitleSize,
-              fontWeight: StaticFontStyle.characterDetailsSubtitleFontWeight,
-              color: StaticColors.characterDetailsSubtitleColor),
         ),
       ),
     );

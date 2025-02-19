@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/character/character_view/character_details.dart';
 import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
+import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_info_card.dart';
+import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_loading_card.dart';
+import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_no_characters_card.dart';
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
 import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
-import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class EpisodeDetails extends StatelessWidget {
@@ -34,10 +36,16 @@ class EpisodeDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _infoCard(
-                Icons.calendar_today, StaticTexts.airDate, episode.airDate),
-            _infoCard(
-                Icons.video_library, StaticTexts.episode, episode.episode),
+            EpisodePageInfoCard(
+              icon: Icons.calendar_today,
+              title: StaticTexts.airDate,
+              value: episode.airDate,
+            ),
+            EpisodePageInfoCard(
+              icon: Icons.video_library,
+              title: StaticTexts.episode,
+              value: episode.episode,
+            ),
             SizedBox(
                 height:
                     StaticFontStyle.episodeDetailsInfoCardAndTitleSpaceBetween),
@@ -53,14 +61,14 @@ class EpisodeDetails extends StatelessWidget {
             SizedBox(
                 height: StaticFontStyle.episodeDetailTitleAndCardsSpaceBetween),
             if (episode.characters == null || episode.characters!.isEmpty)
-              _noCharactersCard()
+              EpisodePageNoCharactersCard()
             else
               ...episode.characters!.map((characterUrl) {
                 return FutureBuilder<CharacterModel?>(
                   future: _service.getCharacter(characterUrl),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return _loadingCard();
+                      return EpisodePageLoadingCard();
                     } else {
                       final character = snapshot.data!;
                       return _characterCard(context, character);
@@ -69,32 +77,6 @@ class EpisodeDetails extends StatelessWidget {
                 );
               }),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _infoCard(IconData icon, String title, String? value) {
-    return Card(
-      color: StaticColors.episodeDetailsInfoCardBGColor,
-      margin: StaticMargins.episodeDetailsInfoCardMargin,
-      shape: RoundedRectangleBorder(
-          borderRadius: StaticFontStyle.episodeDetailInfoCardBorderRadius),
-      child: ListTile(
-        leading: Icon(icon, color: StaticColors.episodeDetailsIconColor),
-        title: Text(
-          title,
-          style: TextStyle(
-              color: StaticColors.episodeDetailsTitleColor,
-              fontSize: StaticFontStyle.episodeDetailInfoCardTitleSize),
-        ),
-        subtitle: Text(
-          value ?? StaticTexts.unknown,
-          style: TextStyle(
-              fontSize: StaticFontStyle.episodeDetailInfoCardSubtitleSize,
-              fontWeight:
-                  StaticFontStyle.episodeDetailInfoCardSubtitleFontWeight,
-              color: StaticColors.episodeDetailsSubtitleColor),
         ),
       ),
     );
@@ -111,7 +93,8 @@ class EpisodeDetails extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           radius: StaticFontStyle.episodeDetailsCharacterCardCircleAvatarRadius,
-          backgroundImage: NetworkImage(character.image ?? StaticTexts.noDataError),
+          backgroundImage:
+              NetworkImage(character.image ?? StaticTexts.noDataError),
         ),
         title: Text(
           character.name ?? StaticTexts.noDataError,
@@ -151,38 +134,6 @@ class EpisodeDetails extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget _loadingCard() {
-    return Card(
-      color: StaticColors.loadingCardColor,
-      margin: StaticMargins.episodeDetailsLoadingCardMargin,
-      shape: RoundedRectangleBorder(
-          borderRadius: StaticFontStyle.episodeDetailsLoadingCardBorderRadius),
-      child: ListTile(
-        leading: Image.asset(StaticPaths.loadingBarPath),
-        title: Text(
-          StaticTexts.loading,
-          style: TextStyle(color: StaticColors.loadingTextColor),
-        ),
-      ),
-    );
-  }
-
-  Widget _noCharactersCard() {
-    return Card(
-      color: StaticColors.noCharactersCardColor,
-      margin: StaticMargins.episodeDetailsNoCharacterCardMargin,
-      shape: RoundedRectangleBorder(
-          borderRadius:
-              StaticFontStyle.episodeDetailsNoCharactersCardBorderRadius),
-      child: ListTile(
-        title: Text(
-          StaticTexts.noCharactersAvailable,
-          style: TextStyle(color: StaticColors.noCharactersAvailableColor),
-        ),
       ),
     );
   }
