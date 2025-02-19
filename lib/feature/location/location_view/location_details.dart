@@ -14,14 +14,14 @@ class LocationDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: StaticColors().locationDetailsGeneralBGColor,
+      backgroundColor: StaticColors.locationDetailsGeneralBGColor,
       appBar: AppBar(
         title: Text(
           location.name ?? '',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: StaticColors().locationDetailsBGColor,
-        foregroundColor: StaticColors().locationDetailsFGColor,
+        backgroundColor: StaticColors.locationDetailsBGColor,
+        foregroundColor: StaticColors.locationDetailsFGColor,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -29,16 +29,16 @@ class LocationDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _infoCard(Icons.public, StaticTexts().type, location.type),
+            _infoCard(Icons.public, StaticTexts.type, location.type),
             _infoCard(
-                Icons.location_on, StaticTexts().dimension, location.dimension),
+                Icons.location_on, StaticTexts.dimension, location.dimension),
             const SizedBox(height: 16),
             Text(
-              StaticTexts().residents,
+              StaticTexts.residents,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: StaticColors().residentsColor,
+                color: StaticColors.residentsColor,
               ),
             ),
             const SizedBox(height: 10),
@@ -66,22 +66,22 @@ class LocationDetails extends StatelessWidget {
 
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
-      color: StaticColors().locationDetailsInfoCardBGColor,
+      color: StaticColors.locationDetailsInfoCardBGColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: Icon(icon, color: StaticColors().locationDetailsIconColor),
+        leading: Icon(icon, color: StaticColors.locationDetailsIconColor),
         title: Text(
           title,
           style: TextStyle(
-              color: StaticColors().locationDetailsTitleColor, fontSize: 14),
+              color: StaticColors.locationDetailsTitleColor, fontSize: 14),
         ),
         subtitle: Text(
-          value ?? StaticTexts().unknown,
+          value ?? StaticTexts.unknown,
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: StaticColors().locationDetailsSubtitleColor),
+              color: StaticColors.locationDetailsSubtitleColor),
         ),
       ),
     );
@@ -89,7 +89,7 @@ class LocationDetails extends StatelessWidget {
 
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
-      color: StaticColors().locationDetailsCharacterCardColor,
+      color: StaticColors.locationDetailsCharacterCardColor,
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -101,7 +101,7 @@ class LocationDetails extends StatelessWidget {
         title: Text(
           character.name ?? '',
           style: TextStyle(
-              color: StaticColors().locationDetailsCharacterNameColor,
+              color: StaticColors.locationDetailsCharacterNameColor,
               fontSize: 18),
         ),
         subtitle: Row(
@@ -110,16 +110,16 @@ class LocationDetails extends StatelessWidget {
               Icons.circle,
               size: 12,
               color: (character.status == 'Alive')
-                  ? StaticColors().characterAliveColor
+                  ? StaticColors.characterAliveColor
                   : (character.status == 'Dead')
-                      ? StaticColors().characterDeadColor
-                      : StaticColors().characterUnknownColor,
+                      ? StaticColors.characterDeadColor
+                      : StaticColors.characterUnknownColor,
             ),
             const SizedBox(width: 6),
             Text(
               '${character.status} - ${character.species}',
               style: TextStyle(
-                  color: StaticColors().locationDetailsCharacterSubtitleColor,
+                  color: StaticColors.locationDetailsCharacterSubtitleColor,
                   fontSize: 14),
             ),
           ],
@@ -137,14 +137,14 @@ class LocationDetails extends StatelessWidget {
 
   Widget _loadingCard() {
     return Card(
-      color: StaticColors().loadingCardColor,
+      color: StaticColors.loadingCardColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Image.asset('assets/gif/portal_loading.gif'),
         title: Text(
-          StaticTexts().loading,
-          style: TextStyle(color: StaticColors().loadingTextColor),
+          StaticTexts.loading,
+          style: TextStyle(color: StaticColors.loadingTextColor),
         ),
       ),
     );
@@ -152,13 +152,13 @@ class LocationDetails extends StatelessWidget {
 
   Widget _noResidentsCard() {
     return Card(
-      color: StaticColors().noResidentsCardColor,
+      color: StaticColors.noResidentsCardColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         title: Text(
-          StaticTexts().noResidentsAvailable,
-          style: TextStyle(color: StaticColors().noResidentsAvailableColor),
+          StaticTexts.noResidentsAvailable,
+          style: TextStyle(color: StaticColors.noResidentsAvailableColor),
         ),
       ),
     );

@@ -35,14 +35,14 @@ class _EpisodePageState extends State<EpisodePage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        foregroundColor: StaticColors().episodePageFGColor,
-        title: Text(StaticTexts().episodesPageTitle),
-        backgroundColor: StaticColors().episodePageBGColor,
+        foregroundColor: StaticColors.episodePageFGColor,
+        title: Text(StaticTexts.episodesPageTitle),
+        backgroundColor: StaticColors.episodePageBGColor,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : _episodes == null
-              ? Center(child: Text(StaticTexts().noEpisodesFound))
+              ? Center(child: Text(StaticTexts.noEpisodesFound))
               : ListView.builder(
                   padding: const EdgeInsets.all(8.0),
                   itemCount: _episodes?.length ?? 0,
@@ -56,25 +56,25 @@ class _EpisodePageState extends State<EpisodePage>
                         leading: Icon(
                           Icons.movie_creation,
                           size: 40,
-                          color: StaticColors().episodePageIconColor,
+                          color: StaticColors.episodePageIconColor,
                         ),
                         title: Text(
                           episode?.name ?? '',
                           style: TextStyle(
-                            color: StaticColors().episodePageNameColor,
+                            color: StaticColors.episodePageNameColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
                         subtitle: Text(
-                          episode?.episode ?? StaticTexts().noEpisodeAvailable,
+                          episode?.episode ?? StaticTexts.noEpisodeAvailable,
                           style: TextStyle(
-                              color: StaticColors().episodePageSubtitleColor),
+                              color: StaticColors.episodePageSubtitleColor),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: 20,
-                          color: StaticColors().episodePageArrowColor,
+                          color: StaticColors.episodePageArrowColor,
                         ),
                         onTap: () {
                           if (episode != null) {

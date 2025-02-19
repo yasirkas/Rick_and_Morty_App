@@ -32,9 +32,9 @@ class _CharacterPageState extends State<CharacterPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(StaticTexts().charactersPageTitle),
-        backgroundColor: StaticColors().characterPageBGColor,
-        foregroundColor: StaticColors().characterPageFGColor,
+        title: Text(StaticTexts.charactersPageTitle),
+        backgroundColor: StaticColors.characterPageBGColor,
+        foregroundColor: StaticColors.characterPageFGColor,
       ),
       body: _characters == null
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
@@ -52,7 +52,7 @@ class _CharacterPageState extends State<CharacterPage> {
                     title: Text(
                       character?.name ?? '',
                       style: TextStyle(
-                        color: StaticColors().characterNameColor,
+                        color: StaticColors.characterNameColor,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -63,16 +63,16 @@ class _CharacterPageState extends State<CharacterPage> {
                           Icons.circle,
                           size: 12,
                           color: (character?.status == 'Alive')
-                              ? StaticColors().characterAliveColor
+                              ? StaticColors.characterAliveColor
                               : (character?.status == 'Dead')
-                                  ? StaticColors().characterDeadColor
-                                  : StaticColors().characterUnknownColor,
+                                  ? StaticColors.characterDeadColor
+                                  : StaticColors.characterUnknownColor,
                         ),
                         const SizedBox(width: 6),
                         Text(
                           '${character?.status} - ${character?.species}',
                           style: TextStyle(
-                              color: StaticColors().characterSubtitleColor),
+                              color: StaticColors.characterSubtitleColor),
                         ),
                       ],
                     ),

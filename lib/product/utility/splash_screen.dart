@@ -36,7 +36,7 @@ class SplashScreenState extends State<SplashScreen> {
               height: 400,
             ),
             SizedBox(height: 30),
-            Text(StaticTexts().loading,
+            Text(StaticTexts.loading,
                 style: TextStyle(fontSize: 20, color: Colors.black)),
           ],
         ),

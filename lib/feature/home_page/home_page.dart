@@ -39,21 +39,21 @@ class _HomePageState extends State<HomePage> {
                 'assets/icon/characters_icon.png',
                 width: 30,
               ),
-              label: StaticTexts().navCharacters,
+              label: StaticTexts.navCharacters,
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/icon/locations_icon.png',
                 width: 30,
               ),
-              label: StaticTexts().navLocations,
+              label: StaticTexts.navLocations,
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/icon/episodes_icon.png',
                 width: 30,
               ),
-              label: StaticTexts().navEpisodes,
+              label: StaticTexts.navEpisodes,
             ),
           ]),
     );

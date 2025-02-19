@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: StaticTexts().mainTitle,
+      title: StaticTexts.mainTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
       home: SplashScreen(),

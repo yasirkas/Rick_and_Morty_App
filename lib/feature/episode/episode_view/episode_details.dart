@@ -14,14 +14,14 @@ class EpisodeDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: StaticColors().episodeDetailsGeneralBGColor,
+      backgroundColor: StaticColors.episodeDetailsGeneralBGColor,
       appBar: AppBar(
         title: Text(
           episode.name ?? '',
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: StaticColors().episodeDetailsBGColor,
-        foregroundColor: StaticColors().episodeDetailsFGColor,
+        backgroundColor: StaticColors.episodeDetailsBGColor,
+        foregroundColor: StaticColors.episodeDetailsFGColor,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -30,16 +30,16 @@ class EpisodeDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _infoCard(
-                Icons.calendar_today, StaticTexts().airDate, episode.airDate),
+                Icons.calendar_today, StaticTexts.airDate, episode.airDate),
             _infoCard(
-                Icons.video_library, StaticTexts().episode, episode.episode),
+                Icons.video_library, StaticTexts.episode, episode.episode),
             const SizedBox(height: 16),
             Text(
-              StaticTexts().characters,
+              StaticTexts.characters,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: StaticColors().charactersColor,
+                color: StaticColors.charactersColor,
               ),
             ),
             const SizedBox(height: 10),
@@ -67,22 +67,22 @@ class EpisodeDetails extends StatelessWidget {
 
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
-      color: StaticColors().episodeDetailsInfoCardBGColor,
+      color: StaticColors.episodeDetailsInfoCardBGColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: Icon(icon, color: StaticColors().episodeDetailsIconColor),
+        leading: Icon(icon, color: StaticColors.episodeDetailsIconColor),
         title: Text(
           title,
           style: TextStyle(
-              color: StaticColors().episodeDetailsTitleColor, fontSize: 14),
+              color: StaticColors.episodeDetailsTitleColor, fontSize: 14),
         ),
         subtitle: Text(
-          value ?? StaticTexts().unknown,
+          value ?? StaticTexts.unknown,
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: StaticColors().episodeDetailsSubtitleColor),
+              color: StaticColors.episodeDetailsSubtitleColor),
         ),
       ),
     );
@@ -90,7 +90,7 @@ class EpisodeDetails extends StatelessWidget {
 
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
-      color: StaticColors().episodeDetailsCharacterCardColor,
+      color: StaticColors.episodeDetailsCharacterCardColor,
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -102,7 +102,7 @@ class EpisodeDetails extends StatelessWidget {
         title: Text(
           character.name ?? '',
           style: TextStyle(
-              color: StaticColors().episodeDetailsCharacterNameColor,
+              color: StaticColors.episodeDetailsCharacterNameColor,
               fontSize: 18),
         ),
         subtitle: Row(
@@ -111,16 +111,16 @@ class EpisodeDetails extends StatelessWidget {
               Icons.circle,
               size: 12,
               color: (character.status == 'Alive')
-                  ? StaticColors().characterAliveColor
+                  ? StaticColors.characterAliveColor
                   : (character.status == 'Dead')
-                      ? StaticColors().characterDeadColor
-                      : StaticColors().characterUnknownColor,
+                      ? StaticColors.characterDeadColor
+                      : StaticColors.characterUnknownColor,
             ),
             const SizedBox(width: 6),
             Text(
               '${character.status} - ${character.species}',
               style: TextStyle(
-                  color: StaticColors().episodeDetailsCharacterSubtitleColor,
+                  color: StaticColors.episodeDetailsCharacterSubtitleColor,
                   fontSize: 14),
             ),
           ],
@@ -138,14 +138,14 @@ class EpisodeDetails extends StatelessWidget {
 
   Widget _loadingCard() {
     return Card(
-      color: StaticColors().loadingCardColor,
+      color: StaticColors.loadingCardColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: Image.asset('assets/gif/portal_loading.gif'),
         title: Text(
-          StaticTexts().loading,
-          style: TextStyle(color: StaticColors().loadingTextColor),
+          StaticTexts.loading,
+          style: TextStyle(color: StaticColors.loadingTextColor),
         ),
       ),
     );
@@ -153,13 +153,13 @@ class EpisodeDetails extends StatelessWidget {
 
   Widget _noCharactersCard() {
     return Card(
-      color: StaticColors().noCharactersCardColor,
+      color: StaticColors.noCharactersCardColor,
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         title: Text(
-          StaticTexts().noCharactersAvailable,
-          style: TextStyle(color: StaticColors().noCharactersAvailableColor),
+          StaticTexts.noCharactersAvailable,
+          style: TextStyle(color: StaticColors.noCharactersAvailableColor),
         ),
       ),
     );

@@ -35,14 +35,14 @@ class _LocationPageState extends State<LocationPage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        foregroundColor: StaticColors().locationPageFGColor,
-        title: Text(StaticTexts().locationsPageTitle),
-        backgroundColor: StaticColors().locationPageBGColor,
+        foregroundColor: StaticColors.locationPageFGColor,
+        title: Text(StaticTexts.locationsPageTitle),
+        backgroundColor: StaticColors.locationPageBGColor,
       ),
       body: isLoading
           ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
           : _locations == null
-              ? Center(child: Text(StaticTexts().noLocationsFound))
+              ? Center(child: Text(StaticTexts.noLocationsFound))
               : ListView.builder(
                   padding: const EdgeInsets.all(8.0),
                   itemCount: _locations?.length ?? 0,
@@ -56,25 +56,25 @@ class _LocationPageState extends State<LocationPage>
                         leading: Icon(
                           Icons.location_on,
                           size: 40,
-                          color: StaticColors().locationPageIconColor,
+                          color: StaticColors.locationPageIconColor,
                         ),
                         title: Text(
                           location?.name ?? '',
                           style: TextStyle(
-                            color: StaticColors().locationPageNameColor,
+                            color: StaticColors.locationPageNameColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
                         subtitle: Text(
-                          location?.type ?? StaticTexts().noTypeAvailable,
+                          location?.type ?? StaticTexts.noTypeAvailable,
                           style: TextStyle(
-                              color: StaticColors().locationPageSubtitleColor),
+                              color: StaticColors.locationPageSubtitleColor),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           size: 20,
-                          color: StaticColors().locationPageArrowColor,
+                          color: StaticColors.locationPageArrowColor,
                         ),
                         onTap: () {
                           if (location != null) {
