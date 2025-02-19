@@ -3,8 +3,10 @@ import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_view/episode_details.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/utility/loading_mixin.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
@@ -42,31 +44,32 @@ class _EpisodePageState extends State<EpisodePage>
         backgroundColor: StaticColors.episodePageBGColor,
       ),
       body: isLoading
-          ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
+          ? Center(child: Image.asset(StaticPaths.loadingBarPath))
           : _episodes == null
               ? Center(child: Text(StaticTexts.noEpisodesFound))
               : ListView.builder(
                   padding: StaticPaddings.episodeListViewBuilderPadding,
-                  itemCount: _episodes?.length ?? 0,
+                  itemCount:
+                      _episodes?.length ?? StaticFontStyle.errorLength,
                   itemBuilder: (context, index) {
                     final episode = _episodes?[index];
                     return Card(
-                      elevation: 5,
+                      elevation: StaticFontStyle.episodePageCardElevation,
                       margin: StaticMargins.episodePageMargin,
                       child: ListTile(
                         contentPadding:
                             StaticPaddings.episodePageContendtPadding,
                         leading: Icon(
                           Icons.movie_creation,
-                          size: 40,
+                          size: StaticFontStyle.episodePageCardIconSize,
                           color: StaticColors.episodePageIconColor,
                         ),
                         title: Text(
-                          episode?.name ?? '',
+                          episode?.name ?? StaticTexts.noDataError,
                           style: TextStyle(
                             color: StaticColors.episodePageNameColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontWeight: StaticFontStyle.episodePageCardTitleFontWeight,
+                            fontSize: StaticFontStyle.episodePageCardTitleSize,
                           ),
                         ),
                         subtitle: Text(
@@ -76,7 +79,7 @@ class _EpisodePageState extends State<EpisodePage>
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
-                          size: 20,
+                          size: StaticFontStyle.episodePageCardArrowSize,
                           color: StaticColors.episodePageArrowColor,
                         ),
                         onTap: () {

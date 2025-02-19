@@ -22,6 +22,8 @@ class StaticColors {
   static Color characterDetailsIconColor = Colors.blueGrey.shade800;
   static Color characterDetailsTitleColor = Colors.blueGrey.shade700;
   static Color characterDetailsSubtitleColor = Colors.black87;
+  static Color characterDetailsInfoCardBGColor = Colors.white;
+
 
   //Location Page Colors
   static Color locationPageBGColor = Colors.green;
@@ -68,4 +70,8 @@ class StaticColors {
   static Color episodeDetailsCharacterSubtitleColor = Colors.black54;
   static Color noCharactersCardColor = Colors.grey.shade300;
   static Color noCharactersAvailableColor = Colors.black87;
+
+  //Splash Screen
+  static Color splashScreenBGColor = Colors.white;
+  static Color splashScreenTextColor = Colors.black;
 }

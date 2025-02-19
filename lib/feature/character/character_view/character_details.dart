@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
@@ -14,10 +15,10 @@ class CharacterDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: StaticColors.characterDetailsGeneralBGColor,
       appBar: AppBar(
-        title: Text(character.name ?? ''),
+        title: Text(character.name ?? StaticTexts.noDataError),
         backgroundColor: StaticColors.characterDetailsBGColor,
         foregroundColor: StaticColors.characterDetailsFGColor,
-        elevation: 2,
+        elevation: StaticFontStyle.characterDetailsPageElevation,
       ),
       body: SingleChildScrollView(
         padding: StaticPaddings.characterDetailsBodyPadding,
@@ -25,25 +26,26 @@ class CharacterDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 80,
-              backgroundImage: NetworkImage(character.image ?? ''),
+              radius: StaticFontStyle.characterCircleAvatarRadius,
+              backgroundImage: NetworkImage(character.image ?? StaticTexts.noDataError),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: StaticFontStyle.characterAndTitleSpaceBetween),
             Text(
-              character.name ?? '',
+              character.name ?? StaticTexts.noDataError,
               style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
+                fontSize: StaticFontStyle.characterPageNameSize,
+                fontWeight: StaticFontStyle.characterPageNameFontWeight,
                 color: StaticColors.characterDetailsNameColor,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
+            SizedBox(
+                height: StaticFontStyle.characterPageNameAndCardSpaceBetween),
             _infoCard(Icons.person, StaticTexts.species, character.species),
             _infoCard(
-                (character.gender == 'Male'
+                (character.gender == StaticTexts.male
                     ? Icons.male
-                    : character.gender == 'Female'
+                    : character.gender == StaticTexts.female
                         ? Icons.female
                         : Icons.question_mark),
                 StaticTexts.gender,
@@ -61,22 +63,24 @@ class CharacterDetails extends StatelessWidget {
 
   Widget _infoCard(IconData icon, String title, String? value) {
     return Card(
-      color: Colors.white,
+      color: StaticColors.characterDetailsInfoCardBGColor,
       margin: StaticMargins.characterDetailsMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 3,
+      shape: RoundedRectangleBorder(
+          borderRadius: StaticFontStyle.characterDetailsInfoCardBorderRadius),
+      elevation: StaticFontStyle.characterDetailsPageInfoCardElevation,
       child: ListTile(
         leading: Icon(icon, color: StaticColors.characterDetailsIconColor),
         title: Text(
           title,
           style: TextStyle(
-              color: StaticColors.characterDetailsTitleColor, fontSize: 14),
+              color: StaticColors.characterDetailsTitleColor,
+              fontSize: StaticFontStyle.characterDetailsTitleSize),
         ),
         subtitle: Text(
           value ?? StaticTexts.unknown,
           style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontSize: StaticFontStyle.characterDetailsSubtitleSize,
+              fontWeight: StaticFontStyle.characterDetailsSubtitleFontWeight,
               color: StaticColors.characterDetailsSubtitleColor),
         ),
       ),

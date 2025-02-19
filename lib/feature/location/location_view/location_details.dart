@@ -4,8 +4,10 @@ import 'package:rick_and_morty_app/feature/character/character_model/character_m
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class LocationDetails extends StatelessWidget {
@@ -19,12 +21,13 @@ class LocationDetails extends StatelessWidget {
       backgroundColor: StaticColors.locationDetailsGeneralBGColor,
       appBar: AppBar(
         title: Text(
-          location.name ?? '',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          location.name ?? StaticTexts.noDataError,
+          style: TextStyle(
+              fontWeight: StaticFontStyle.locationDetailsPageTitleFontWeight),
         ),
         backgroundColor: StaticColors.locationDetailsBGColor,
         foregroundColor: StaticColors.locationDetailsFGColor,
-        elevation: 0,
+        elevation: StaticFontStyle.locationDetailsPageElevation,
       ),
       body: SingleChildScrollView(
         padding: StaticPaddings.locationDetailsBodyPadding,
@@ -34,16 +37,21 @@ class LocationDetails extends StatelessWidget {
             _infoCard(Icons.public, StaticTexts.type, location.type),
             _infoCard(
                 Icons.location_on, StaticTexts.dimension, location.dimension),
-            const SizedBox(height: 16),
+            SizedBox(
+                height: StaticFontStyle
+                    .locationDetailsInfoCardAndTitleSpaceBetween),
             Text(
               StaticTexts.residents,
               style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+                fontSize: StaticFontStyle.locationDetailResidentsTitleSize,
+                fontWeight:
+                    StaticFontStyle.locationDetailCharactersTitleFontWeight,
                 color: StaticColors.residentsColor,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(
+                height:
+                    StaticFontStyle.locationDetailTitleAndCardsSpaceBetween),
             if (location.residents == null || location.residents!.isEmpty)
               _noResidentsCard()
             else
@@ -70,19 +78,22 @@ class LocationDetails extends StatelessWidget {
     return Card(
       color: StaticColors.locationDetailsInfoCardBGColor,
       margin: StaticMargins.locationDetailsInfoCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius: StaticFontStyle.locationDetailInfoCardBorderRadius),
       child: ListTile(
         leading: Icon(icon, color: StaticColors.locationDetailsIconColor),
         title: Text(
           title,
           style: TextStyle(
-              color: StaticColors.locationDetailsTitleColor, fontSize: 14),
+              color: StaticColors.locationDetailsTitleColor,
+              fontSize: StaticFontStyle.locationDetailInfoCardTitleSize),
         ),
         subtitle: Text(
           value ?? StaticTexts.unknown,
           style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontSize: StaticFontStyle.locationDetailInfoCardSubtitleSize,
+              fontWeight:
+                  StaticFontStyle.locationDetailInfoCardSubtitleFontWeight,
               color: StaticColors.locationDetailsSubtitleColor),
         ),
       ),
@@ -92,37 +103,45 @@ class LocationDetails extends StatelessWidget {
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
       color: StaticColors.locationDetailsCharacterCardColor,
-      elevation: 2,
+      elevation: StaticFontStyle.locationDetailsCharacterCardElevation,
       margin: StaticMargins.locationDetailsCharacterCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              StaticFontStyle.locationDetailsCharacterCardBorderRadius),
       child: ListTile(
         leading: CircleAvatar(
-          radius: 28,
-          backgroundImage: NetworkImage(character.image ?? ''),
+          radius:
+              StaticFontStyle.locationDetailsCharacterCardCircleAvatarRadius,
+          backgroundImage: NetworkImage(character.image ?? StaticTexts.noDataError),
         ),
         title: Text(
-          character.name ?? '',
+          character.name ?? StaticTexts.noDataError,
           style: TextStyle(
               color: StaticColors.locationDetailsCharacterNameColor,
-              fontSize: 18),
+              fontSize: StaticFontStyle.locationDetailsCharacterNameSize,
+              fontWeight:
+                  StaticFontStyle.locationDetailsCharacterNameFontWeight),
         ),
         subtitle: Row(
           children: [
             Icon(
               Icons.circle,
-              size: 12,
-              color: (character.status == 'Alive')
+              size: StaticFontStyle.locationDetailsIconsCircleSize,
+              color: (character.status == StaticTexts.alive)
                   ? StaticColors.characterAliveColor
-                  : (character.status == 'Dead')
+                  : (character.status == StaticTexts.dead)
                       ? StaticColors.characterDeadColor
                       : StaticColors.characterUnknownColor,
             ),
-            const SizedBox(width: 6),
+            SizedBox(
+                width: StaticFontStyle
+                    .locationDetailsIconsCircleAndSubtitleSpaceBetween),
             Text(
               '${character.status} - ${character.species}',
               style: TextStyle(
                   color: StaticColors.locationDetailsCharacterSubtitleColor,
-                  fontSize: 14),
+                  fontSize:
+                      StaticFontStyle.locationDetailsCharacterCardSubtitleSize),
             ),
           ],
         ),
@@ -141,9 +160,10 @@ class LocationDetails extends StatelessWidget {
     return Card(
       color: StaticColors.loadingCardColor,
       margin: StaticMargins.locationDetailsLoadingCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius: StaticFontStyle.locationDetailsLoadingCardBorderRadius),
       child: ListTile(
-        leading: Image.asset('assets/gif/portal_loading.gif'),
+        leading: Image.asset(StaticPaths.loadingBarPath),
         title: Text(
           StaticTexts.loading,
           style: TextStyle(color: StaticColors.loadingTextColor),
@@ -156,7 +176,9 @@ class LocationDetails extends StatelessWidget {
     return Card(
       color: StaticColors.noResidentsCardColor,
       margin: StaticMargins.locationDetailsNoResidentsCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              StaticFontStyle.locationDetailsNoCharactersCardBorderRadius),
       child: ListTile(
         title: Text(
           StaticTexts.noResidentsAvailable,

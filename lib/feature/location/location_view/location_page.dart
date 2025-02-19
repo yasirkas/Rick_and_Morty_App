@@ -3,8 +3,10 @@ import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/location/location_view/location_details.dart';
 import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/utility/loading_mixin.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
@@ -42,31 +44,32 @@ class _LocationPageState extends State<LocationPage>
         backgroundColor: StaticColors.locationPageBGColor,
       ),
       body: isLoading
-          ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
+          ? Center(child: Image.asset(StaticPaths.loadingBarPath))
           : _locations == null
               ? Center(child: Text(StaticTexts.noLocationsFound))
               : ListView.builder(
                   padding: StaticPaddings.locationListViewBuilderPadding,
-                  itemCount: _locations?.length ?? 0,
+                  itemCount: _locations?.length ?? StaticFontStyle.errorLength,
                   itemBuilder: (context, index) {
                     final location = _locations?[index];
                     return Card(
-                      elevation: 5,
+                      elevation: StaticFontStyle.locationPageCardElevation,
                       margin: StaticMargins.locationPageMargin,
                       child: ListTile(
                         contentPadding:
                             StaticPaddings.locationPageContendtPadding,
                         leading: Icon(
                           Icons.location_on,
-                          size: 40,
+                          size: StaticFontStyle.locationPageCardIconSize,
                           color: StaticColors.locationPageIconColor,
                         ),
                         title: Text(
-                          location?.name ?? '',
+                          location?.name ?? StaticTexts.noDataError,
                           style: TextStyle(
                             color: StaticColors.locationPageNameColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontWeight:
+                                StaticFontStyle.locationPageCardTitleFontWeight,
+                            fontSize: StaticFontStyle.locationPageCardTitleSize,
                           ),
                         ),
                         subtitle: Text(
@@ -76,7 +79,7 @@ class _LocationPageState extends State<LocationPage>
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
-                          size: 20,
+                          size: StaticFontStyle.locationPageCardArrowSize,
                           color: StaticColors.locationPageArrowColor,
                         ),
                         onTap: () {

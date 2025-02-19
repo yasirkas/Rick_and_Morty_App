@@ -3,7 +3,9 @@ import 'package:rick_and_morty_app/feature/character/character_model/character_m
 import 'package:rick_and_morty_app/feature/character/character_view/character_details.dart';
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class CharacterPage extends StatefulWidget {
@@ -38,37 +40,40 @@ class _CharacterPageState extends State<CharacterPage> {
         foregroundColor: StaticColors.characterPageFGColor,
       ),
       body: _characters == null
-          ? Center(child: Image.asset('assets/gif/portal_loading.gif'))
+          ? Center(child: Image.asset(StaticPaths.loadingBarPath))
           : ListView.builder(
-              itemCount: _characters?.length ?? 0,
+              itemCount:
+                  _characters?.length ?? StaticFontStyle.errorLength,
               itemBuilder: (context, index) {
                 final character = _characters?[index];
                 return Card(
                   margin: StaticMargins.characterPageMargin,
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: NetworkImage(character?.image ?? ''),
+                      backgroundImage: NetworkImage(character?.image ?? StaticTexts.noDataError),
                     ),
                     title: Text(
-                      character?.name ?? '',
+                      character?.name ?? StaticTexts.noDataError,
                       style: TextStyle(
                         color: StaticColors.characterNameColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontSize: StaticFontStyle.characterPageTitleFontSize,
+                        fontWeight:
+                            StaticFontStyle.characterPageTitleFontWeight,
                       ),
                     ),
                     subtitle: Row(
                       children: [
                         Icon(
                           Icons.circle,
-                          size: 12,
-                          color: (character?.status == 'Alive')
+                          size: StaticFontStyle.characterPageCircleIconSize,
+                          color: (character?.status == StaticTexts.alive)
                               ? StaticColors.characterAliveColor
-                              : (character?.status == 'Dead')
+                              : (character?.status == StaticTexts.dead)
                                   ? StaticColors.characterDeadColor
                                   : StaticColors.characterUnknownColor,
                         ),
-                        const SizedBox(width: 6),
+                        SizedBox(
+                            width: StaticFontStyle.characterPageSizedBoxSize),
                         Text(
                           '${character?.status} - ${character?.species}',
                           style: TextStyle(

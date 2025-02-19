@@ -4,8 +4,10 @@ import 'package:rick_and_morty_app/feature/character/character_model/character_m
 import 'package:rick_and_morty_app/product/contains/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
 import 'package:rick_and_morty_app/product/contains/static_margins.dart';
 import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class EpisodeDetails extends StatelessWidget {
@@ -19,12 +21,13 @@ class EpisodeDetails extends StatelessWidget {
       backgroundColor: StaticColors.episodeDetailsGeneralBGColor,
       appBar: AppBar(
         title: Text(
-          episode.name ?? '',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          episode.name ?? StaticTexts.noDataError,
+          style: TextStyle(
+              fontWeight: StaticFontStyle.episodeDetailsPageTitleFontWeight),
         ),
         backgroundColor: StaticColors.episodeDetailsBGColor,
         foregroundColor: StaticColors.episodeDetailsFGColor,
-        elevation: 0,
+        elevation: StaticFontStyle.episodeDetailsPageElevation,
       ),
       body: SingleChildScrollView(
         padding: StaticPaddings.episodeDetailsBodyPadding,
@@ -35,16 +38,20 @@ class EpisodeDetails extends StatelessWidget {
                 Icons.calendar_today, StaticTexts.airDate, episode.airDate),
             _infoCard(
                 Icons.video_library, StaticTexts.episode, episode.episode),
-            const SizedBox(height: 16),
+            SizedBox(
+                height:
+                    StaticFontStyle.episodeDetailsInfoCardAndTitleSpaceBetween),
             Text(
               StaticTexts.characters,
               style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+                fontSize: StaticFontStyle.episodeDetailCharactersTitleSize,
+                fontWeight:
+                    StaticFontStyle.episodeDetailCharactersTitleFontWeight,
                 color: StaticColors.charactersColor,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(
+                height: StaticFontStyle.episodeDetailTitleAndCardsSpaceBetween),
             if (episode.characters == null || episode.characters!.isEmpty)
               _noCharactersCard()
             else
@@ -71,19 +78,22 @@ class EpisodeDetails extends StatelessWidget {
     return Card(
       color: StaticColors.episodeDetailsInfoCardBGColor,
       margin: StaticMargins.episodeDetailsInfoCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius: StaticFontStyle.episodeDetailInfoCardBorderRadius),
       child: ListTile(
         leading: Icon(icon, color: StaticColors.episodeDetailsIconColor),
         title: Text(
           title,
           style: TextStyle(
-              color: StaticColors.episodeDetailsTitleColor, fontSize: 14),
+              color: StaticColors.episodeDetailsTitleColor,
+              fontSize: StaticFontStyle.episodeDetailInfoCardTitleSize),
         ),
         subtitle: Text(
           value ?? StaticTexts.unknown,
           style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontSize: StaticFontStyle.episodeDetailInfoCardSubtitleSize,
+              fontWeight:
+                  StaticFontStyle.episodeDetailInfoCardSubtitleFontWeight,
               color: StaticColors.episodeDetailsSubtitleColor),
         ),
       ),
@@ -93,37 +103,44 @@ class EpisodeDetails extends StatelessWidget {
   Widget _characterCard(BuildContext context, CharacterModel character) {
     return Card(
       color: StaticColors.episodeDetailsCharacterCardColor,
-      elevation: 2,
+      elevation: StaticFontStyle.episodeDetailsCharacterCardElevation,
       margin: StaticMargins.episodeDetailsCharacterCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              StaticFontStyle.episodeDetailsCharacterCardBorderRadius),
       child: ListTile(
         leading: CircleAvatar(
-          radius: 28,
-          backgroundImage: NetworkImage(character.image ?? ''),
+          radius: StaticFontStyle.episodeDetailsCharacterCardCircleAvatarRadius,
+          backgroundImage: NetworkImage(character.image ?? StaticTexts.noDataError),
         ),
         title: Text(
-          character.name ?? '',
+          character.name ?? StaticTexts.noDataError,
           style: TextStyle(
               color: StaticColors.episodeDetailsCharacterNameColor,
-              fontSize: 18),
+              fontSize: StaticFontStyle.episodeDetailsCharacterNameSize,
+              fontWeight:
+                  StaticFontStyle.episodeDetailsCharacterNameFontWeight),
         ),
         subtitle: Row(
           children: [
             Icon(
               Icons.circle,
-              size: 12,
-              color: (character.status == 'Alive')
+              size: StaticFontStyle.episodeDetailsIconsCircleSize,
+              color: (character.status == StaticTexts.alive)
                   ? StaticColors.characterAliveColor
-                  : (character.status == 'Dead')
+                  : (character.status == StaticTexts.dead)
                       ? StaticColors.characterDeadColor
                       : StaticColors.characterUnknownColor,
             ),
-            const SizedBox(width: 6),
+            SizedBox(
+                width: StaticFontStyle
+                    .episodeDetailsIconsCircleAndSubtitleSpaceBetween),
             Text(
               '${character.status} - ${character.species}',
               style: TextStyle(
                   color: StaticColors.episodeDetailsCharacterSubtitleColor,
-                  fontSize: 14),
+                  fontSize:
+                      StaticFontStyle.episodeDetailsCharacterCardSubtitleSize),
             ),
           ],
         ),
@@ -142,9 +159,10 @@ class EpisodeDetails extends StatelessWidget {
     return Card(
       color: StaticColors.loadingCardColor,
       margin: StaticMargins.episodeDetailsLoadingCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius: StaticFontStyle.episodeDetailsLoadingCardBorderRadius),
       child: ListTile(
-        leading: Image.asset('assets/gif/portal_loading.gif'),
+        leading: Image.asset(StaticPaths.loadingBarPath),
         title: Text(
           StaticTexts.loading,
           style: TextStyle(color: StaticColors.loadingTextColor),
@@ -157,7 +175,9 @@ class EpisodeDetails extends StatelessWidget {
     return Card(
       color: StaticColors.noCharactersCardColor,
       margin: StaticMargins.episodeDetailsNoCharacterCardMargin,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              StaticFontStyle.episodeDetailsNoCharactersCardBorderRadius),
       child: ListTile(
         title: Text(
           StaticTexts.noCharactersAvailable,

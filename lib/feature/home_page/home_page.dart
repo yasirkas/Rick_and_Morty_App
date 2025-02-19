@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/character/character_view/character_page.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_view/episode_page.dart';
 import 'package:rick_and_morty_app/feature/location/location_view/location_page.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,22 +38,22 @@ class _HomePageState extends State<HomePage> {
           items: [
             BottomNavigationBarItem(
               icon: Image.asset(
-                'assets/icon/characters_icon.png',
-                width: 30,
+                StaticPaths.navCharactersIconPath,
+                width: StaticFontStyle.homePageIconWidth,
               ),
               label: StaticTexts.navCharacters,
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
-                'assets/icon/locations_icon.png',
-                width: 30,
+                StaticPaths.navLocationsIconPath,
+                width: StaticFontStyle.homePageIconWidth,
               ),
               label: StaticTexts.navLocations,
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
-                'assets/icon/episodes_icon.png',
-                width: 30,
+                StaticPaths.navEpisodesIconPath,
+                width: StaticFontStyle.homePageIconWidth,
               ),
               label: StaticTexts.navEpisodes,
             ),

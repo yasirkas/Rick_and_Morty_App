@@ -1,6 +1,12 @@
 class StaticTexts {
   static String mainTitle = 'R&M APP';
 
+  //Query Text
+  static String male = 'Male';
+  static String female = 'Female';
+  static String alive = 'Alive';
+  static String dead = 'Dead';
+
   //Home Page
   static String navCharacters = 'Characters';
   static String navLocations = 'Locations';
@@ -19,6 +25,7 @@ class StaticTexts {
   // Common feature
   static String unknown = 'Unknown';
   static String loading = 'Loading...';
+  static String noDataError = 'No data here';
   //Location Page
   static String locationsPageTitle = 'Locations';
   static String type = 'Type';

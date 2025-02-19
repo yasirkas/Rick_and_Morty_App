@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/home_page/home_page.dart';
+import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
+import 'package:rick_and_morty_app/product/contains/static_paths.dart';
 import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,7 +16,7 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(StaticFontStyle.splashScreenDuration, () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
@@ -26,18 +29,21 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: StaticColors.splashScreenBGColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/gif/intro.gif',
-              height: 400,
+              StaticPaths.introPath,
+              height: StaticFontStyle.splashScreenImageHeight,
             ),
-            SizedBox(height: 30),
+            SizedBox(
+                height: StaticFontStyle.splashScreenImageAndTextSpaceBetween),
             Text(StaticTexts.loading,
-                style: TextStyle(fontSize: 20, color: Colors.black)),
+                style: TextStyle(
+                    fontSize: StaticFontStyle.splashScreenTextSize,
+                    color: StaticColors.splashScreenTextColor)),
           ],
         ),
       ),
