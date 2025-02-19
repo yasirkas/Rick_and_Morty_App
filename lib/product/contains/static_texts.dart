@@ -1,5 +1,5 @@
 class StaticTexts {
-  static String mainTitle = 'R&M APP';
+  static String mainTitle = 'R&M App';
 
   //Query Text
   static String male = 'Male';
