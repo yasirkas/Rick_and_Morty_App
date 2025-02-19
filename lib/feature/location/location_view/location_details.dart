@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/feature_product/character/character_details.dart';
-import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
-import 'package:rick_and_morty_app/feature_product/contains/static_colors.dart';
-import 'package:rick_and_morty_app/feature_product/location/location_model.dart';
-import 'package:rick_and_morty_app/feature_product/service/service.dart';
-import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/feature/character/character_view/character_details.dart';
+import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
+import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
+import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class LocationDetails extends StatelessWidget {
   LocationDetails({super.key, required this.location});

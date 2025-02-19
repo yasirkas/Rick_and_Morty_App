@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/feature_product/home_page.dart';
-import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/feature/home_page/home_page.dart';
+import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

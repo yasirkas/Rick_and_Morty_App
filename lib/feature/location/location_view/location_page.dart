@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/feature_product/contains/static_colors.dart';
-import 'package:rick_and_morty_app/feature_product/location/location_details.dart';
-import 'package:rick_and_morty_app/feature_product/location/location_model.dart';
-import 'package:rick_and_morty_app/feature_product/service/service.dart';
-import 'package:rick_and_morty_app/feature_product/utility/loading_mixin.dart';
-import 'package:rick_and_morty_app/feature_product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/feature/location/location_view/location_details.dart';
+import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
+import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/product/utility/loading_mixin.dart';
+import 'package:rick_and_morty_app/product/contains/static_texts.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});

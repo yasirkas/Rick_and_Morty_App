@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:rick_and_morty_app/feature_product/character/character_model.dart';
-import 'package:rick_and_morty_app/feature_product/episode/episode_model.dart';
-import 'package:rick_and_morty_app/feature_product/location/location_model.dart';
+import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
+import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
+import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
 
 class Service {
   final Dio _dio = Dio(BaseOptions(baseUrl: 'https://rickandmortyapi.com/api'));
