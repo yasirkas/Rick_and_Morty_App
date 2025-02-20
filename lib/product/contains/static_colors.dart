@@ -9,7 +9,7 @@ class StaticColors {
   static Color loadingCardColor = Colors.grey.shade300;
 
   //Characters Page Colors
-  static Color characterPageBGColor = Colors.blueAccent;
+  static Color characterPageBGColor = Colors.blue;
   static Color characterPageFGColor = Colors.white;
   static Color characterNameColor = Colors.black;
   static Color characterSubtitleColor = Colors.grey.shade900;
@@ -23,7 +23,6 @@ class StaticColors {
   static Color characterDetailsTitleColor = Colors.blueGrey.shade700;
   static Color characterDetailsSubtitleColor = Colors.black87;
   static Color characterDetailsInfoCardBGColor = Colors.white;
-
 
   //Location Page Colors
   static Color locationPageBGColor = Colors.green;
@@ -49,9 +48,9 @@ class StaticColors {
   static Color noResidentsCardColor = Colors.grey.shade300;
 
   //Episodes Page Colors
-  static Color episodePageBGColor = Colors.orangeAccent;
+  static Color episodePageBGColor = Colors.orange;
   static Color episodePageFGColor = Colors.white;
-  static Color episodePageIconColor = Colors.blueAccent;
+  static Color episodePageIconColor = Colors.orangeAccent;
   static Color episodePageNameColor = Colors.black;
   static Color episodePageSubtitleColor = Colors.black87;
   static Color episodePageArrowColor = Colors.blueAccent;
