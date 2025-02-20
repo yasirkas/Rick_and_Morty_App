@@ -8,6 +8,9 @@ class StaticColors {
   static Color loadingTextColor = Colors.black87;
   static Color loadingCardColor = Colors.grey.shade300;
 
+  //Home Page
+  static Color navigationBarBGColor = Colors.blueGrey.shade100;
+
   //Characters Page Colors
   static Color characterPageBGColor = Colors.blue;
   static Color characterPageFGColor = Colors.white;
