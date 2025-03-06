@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/home_page/home_page.dart';
-import 'package:rick_and_morty_app/product/contains/static_colors.dart';
-import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
-import 'package:rick_and_morty_app/product/contains/static_paths.dart';
-import 'package:rick_and_morty_app/product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/product/costants/static_colors.dart';
+import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
+import 'package:rick_and_morty_app/product/costants/static_paths.dart';
+import 'package:rick_and_morty_app/product/costants/static_texts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

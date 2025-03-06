@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/splash_screen/splash_screen.dart';
-import 'package:rick_and_morty_app/product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/product/costants/static_texts.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/product/costants/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_view/episode_details.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
-import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
-import 'package:rick_and_morty_app/product/contains/static_margins.dart';
-import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
-import 'package:rick_and_morty_app/product/contains/static_paths.dart';
+import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
+import 'package:rick_and_morty_app/product/costants/static_margins.dart';
+import 'package:rick_and_morty_app/product/costants/static_paddings.dart';
+import 'package:rick_and_morty_app/product/costants/static_paths.dart';
 import 'package:rick_and_morty_app/product/utility/loading_mixin.dart';
-import 'package:rick_and_morty_app/product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/product/costants/static_texts.dart';
 
 class EpisodePage extends StatefulWidget {
   const EpisodePage({super.key});

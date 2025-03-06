@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
 import 'package:rick_and_morty_app/feature/character/character_view/character_details.dart';
-import 'package:rick_and_morty_app/product/contains/static_colors.dart';
-import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
-import 'package:rick_and_morty_app/product/contains/static_margins.dart';
-import 'package:rick_and_morty_app/product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/product/costants/static_colors.dart';
+import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
+import 'package:rick_and_morty_app/product/costants/static_margins.dart';
+import 'package:rick_and_morty_app/product/costants/static_texts.dart';
 
 class EpisodePageCharacterCard extends StatelessWidget {
   const EpisodePageCharacterCard({super.key, required this.character});

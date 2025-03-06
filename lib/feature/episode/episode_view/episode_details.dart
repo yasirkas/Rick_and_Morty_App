@@ -4,12 +4,12 @@ import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_
 import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_info_card.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_loading_card.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_widgets/episode_page_no_characters_card.dart';
-import 'package:rick_and_morty_app/product/contains/static_colors.dart';
+import 'package:rick_and_morty_app/product/costants/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
 import 'package:rick_and_morty_app/feature/service/service.dart';
-import 'package:rick_and_morty_app/product/contains/static_font_style.dart';
-import 'package:rick_and_morty_app/product/contains/static_paddings.dart';
-import 'package:rick_and_morty_app/product/contains/static_texts.dart';
+import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
+import 'package:rick_and_morty_app/product/costants/static_paddings.dart';
+import 'package:rick_and_morty_app/product/costants/static_texts.dart';
 
 class EpisodeDetails extends StatelessWidget {
   EpisodeDetails({super.key, required this.episode});
@@ -30,55 +30,65 @@ class EpisodeDetails extends StatelessWidget {
         foregroundColor: StaticColors.episodeDetailsFGColor,
         elevation: StaticFontStyle.episodeDetailsPageElevation,
       ),
-      body: SingleChildScrollView(
+      body: ListView.builder(
         padding: StaticPaddings.episodeDetailsBodyPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            EpisodePageInfoCard(
+        itemCount: (episode.characters == null || episode.characters!.isEmpty)
+            ? 4 // Info cards + Title + No Characters Card
+            : (episode.characters!.length +
+                3), // Info cards + Title + Characters
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return EpisodePageInfoCard(
               icon: Icons.calendar_today,
               title: StaticTexts.airDate,
               value: episode.airDate,
-            ),
-            EpisodePageInfoCard(
+            );
+          } else if (index == 1) {
+            return EpisodePageInfoCard(
               icon: Icons.video_library,
               title: StaticTexts.episode,
               value: episode.episode,
-            ),
-            SizedBox(
-                height:
-                    StaticFontStyle.episodeDetailsInfoCardAndTitleSpaceBetween),
-            Text(
-              StaticTexts.characters,
-              style: TextStyle(
-                fontSize: StaticFontStyle.episodeDetailCharactersTitleSize,
-                fontWeight:
-                    StaticFontStyle.episodeDetailCharactersTitleFontWeight,
-                color: StaticColors.charactersColor,
-              ),
-            ),
-            SizedBox(
-                height: StaticFontStyle.episodeDetailTitleAndCardsSpaceBetween),
-            if (episode.characters == null || episode.characters!.isEmpty)
-              EpisodePageNoCharactersCard()
-            else
-              ...episode.characters!.map((characterUrl) {
-                return FutureBuilder<CharacterModel?>(
-                  future: _service.getCharacter(characterUrl),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return EpisodePageLoadingCard();
-                    } else {
-                      final character = snapshot.data!;
-                      return EpisodePageCharacterCard(character: character);
-                    }
-                  },
-                );
-              }),
-          ],
-        ),
+            );
+          } else if (index == 2) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                    height: StaticFontStyle
+                        .episodeDetailsInfoCardAndTitleSpaceBetween),
+                Text(
+                  StaticTexts.characters,
+                  style: TextStyle(
+                    fontSize: StaticFontStyle.episodeDetailCharactersTitleSize,
+                    fontWeight:
+                        StaticFontStyle.episodeDetailCharactersTitleFontWeight,
+                    color: StaticColors.charactersColor,
+                  ),
+                ),
+                SizedBox(
+                    height:
+                        StaticFontStyle.episodeDetailTitleAndCardsSpaceBetween),
+              ],
+            );
+          } else if (episode.characters == null ||
+              episode.characters!.isEmpty) {
+            return EpisodePageNoCharactersCard();
+          } else {
+            final characterUrl = episode.characters![index - 3];
+            return FutureBuilder<CharacterModel?>(
+              future: _service.getCharacter(characterUrl),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return EpisodePageLoadingCard();
+                } else {
+                  final character = snapshot.data!;
+                  return EpisodePageCharacterCard(character: character);
+                }
+              },
+            );
+          }
+        },
       ),
     );
   }
-
 }
