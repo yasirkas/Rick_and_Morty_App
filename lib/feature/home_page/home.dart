@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/feature/character/character_view/character_page.dart';
-import 'package:rick_and_morty_app/feature/episode/episode_view/episode_page.dart';
-import 'package:rick_and_morty_app/feature/location/location_view/location_page.dart';
+import 'package:rick_and_morty_app/feature/character/view/character_home.dart';
+import 'package:rick_and_morty_app/feature/episode/view/episode_home.dart';
+import 'package:rick_and_morty_app/feature/location/view/location_home.dart';
 import 'package:rick_and_morty_app/product/costants/static_colors.dart';
 import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
 import 'package:rick_and_morty_app/product/costants/static_paths.dart';

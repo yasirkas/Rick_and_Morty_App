@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_app/product/costants/static_colors.dart';
-import 'package:rick_and_morty_app/feature/episode/episode_view/episode_details.dart';
-import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
-import 'package:rick_and_morty_app/feature/service/service.dart';
+import 'package:rick_and_morty_app/feature/episode/view/episode_details.dart';
+import 'package:rick_and_morty_app/feature/episode/model/episode_model.dart';
+import 'package:rick_and_morty_app/product/service/service.dart';
 import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
 import 'package:rick_and_morty_app/product/costants/static_margins.dart';
 import 'package:rick_and_morty_app/product/costants/static_paddings.dart';

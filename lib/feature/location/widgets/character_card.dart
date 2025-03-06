@@ -1,43 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
-import 'package:rick_and_morty_app/feature/character/character_view/character_details.dart';
+import 'package:rick_and_morty_app/feature/character/model/character_model.dart';
+import 'package:rick_and_morty_app/feature/character/view/character_details.dart';
 import 'package:rick_and_morty_app/product/costants/static_colors.dart';
 import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
 import 'package:rick_and_morty_app/product/costants/static_margins.dart';
 import 'package:rick_and_morty_app/product/costants/static_texts.dart';
 
-class EpisodePageCharacterCard extends StatelessWidget {
-  const EpisodePageCharacterCard({super.key, required this.character});
+class LocationPageCharacterCard extends StatelessWidget {
+  const LocationPageCharacterCard({super.key, required this.character});
   final CharacterModel character;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: StaticColors.episodeDetailsCharacterCardColor,
-      elevation: StaticFontStyle.episodeDetailsCharacterCardElevation,
-      margin: StaticMargins.episodeDetailsCharacterCardMargin,
+      color: StaticColors.locationDetailsCharacterCardColor,
+      elevation: StaticFontStyle.locationDetailsCharacterCardElevation,
+      margin: StaticMargins.locationDetailsCharacterCardMargin,
       shape: RoundedRectangleBorder(
           borderRadius:
-              StaticFontStyle.episodeDetailsCharacterCardBorderRadius),
+              StaticFontStyle.locationDetailsCharacterCardBorderRadius),
       child: ListTile(
         leading: CircleAvatar(
-          radius: StaticFontStyle.episodeDetailsCharacterCardCircleAvatarRadius,
+          radius:
+              StaticFontStyle.locationDetailsCharacterCardCircleAvatarRadius,
           backgroundImage:
               NetworkImage(character.image ?? StaticTexts.noDataError),
         ),
         title: Text(
           character.name ?? StaticTexts.noDataError,
           style: TextStyle(
-              color: StaticColors.episodeDetailsCharacterNameColor,
-              fontSize: StaticFontStyle.episodeDetailsCharacterNameSize,
+              color: StaticColors.locationDetailsCharacterNameColor,
+              fontSize: StaticFontStyle.locationDetailsCharacterNameSize,
               fontWeight:
-                  StaticFontStyle.episodeDetailsCharacterNameFontWeight),
+                  StaticFontStyle.locationDetailsCharacterNameFontWeight),
         ),
         subtitle: Row(
           children: [
             Icon(
               Icons.circle,
-              size: StaticFontStyle.episodeDetailsIconsCircleSize,
+              size: StaticFontStyle.locationDetailsIconsCircleSize,
               color: (character.status == StaticTexts.alive)
                   ? StaticColors.characterAliveColor
                   : (character.status == StaticTexts.dead)
@@ -46,13 +47,13 @@ class EpisodePageCharacterCard extends StatelessWidget {
             ),
             SizedBox(
                 width: StaticFontStyle
-                    .episodeDetailsIconsCircleAndSubtitleSpaceBetween),
+                    .locationDetailsIconsCircleAndSubtitleSpaceBetween),
             Text(
               '${character.status} - ${character.species}',
               style: TextStyle(
-                  color: StaticColors.episodeDetailsCharacterSubtitleColor,
+                  color: StaticColors.locationDetailsCharacterSubtitleColor,
                   fontSize:
-                      StaticFontStyle.episodeDetailsCharacterCardSubtitleSize),
+                      StaticFontStyle.locationDetailsCharacterCardSubtitleSize),
             ),
           ],
         ),

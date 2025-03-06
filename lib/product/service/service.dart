@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:rick_and_morty_app/feature/character/character_model/character_model.dart';
-import 'package:rick_and_morty_app/feature/episode/episode_model/episode_model.dart';
-import 'package:rick_and_morty_app/feature/location/location_model/location_model.dart';
+import 'package:rick_and_morty_app/feature/character/model/character_model.dart';
+import 'package:rick_and_morty_app/feature/episode/model/episode_model.dart';
+import 'package:rick_and_morty_app/feature/location/model/location_model.dart';
 
 class Service {
   final Dio _dio = Dio(BaseOptions(baseUrl: 'https://rickandmortyapi.com/api'));
@@ -80,7 +80,7 @@ class Service {
         }
       }
     } catch (e) {
-      throw Exception("An error occurred while retrieving episode data: $e");
+      throw Exception("An error occurred while retrieving character data: $e");
     }
     return null;
   }
