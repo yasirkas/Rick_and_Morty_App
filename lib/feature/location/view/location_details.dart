@@ -4,12 +4,12 @@ import 'package:rick_and_morty_app/feature/location/widgets/character_card.dart'
 import 'package:rick_and_morty_app/feature/location/widgets/info_card.dart';
 import 'package:rick_and_morty_app/feature/location/widgets/loading_card.dart';
 import 'package:rick_and_morty_app/feature/location/widgets/no_residents_card.dart';
-import 'package:rick_and_morty_app/product/costants/static_colors.dart';
+import 'package:rick_and_morty_app/product/constants/static_colors.dart';
 import 'package:rick_and_morty_app/feature/location/model/location_model.dart';
 import 'package:rick_and_morty_app/product/service/service.dart';
-import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
-import 'package:rick_and_morty_app/product/costants/static_paddings.dart';
-import 'package:rick_and_morty_app/product/costants/static_texts.dart';
+import 'package:rick_and_morty_app/product/constants/static_font_style.dart';
+import 'package:rick_and_morty_app/product/constants/static_paddings.dart';
+import 'package:rick_and_morty_app/product/constants/static_texts.dart';
 
 class LocationDetails extends StatelessWidget {
   LocationDetails({super.key, required this.location});

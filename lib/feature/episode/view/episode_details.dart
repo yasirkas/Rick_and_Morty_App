@@ -4,12 +4,12 @@ import 'package:rick_and_morty_app/feature/episode/widgets/character_card.dart';
 import 'package:rick_and_morty_app/feature/episode/widgets/info_card.dart';
 import 'package:rick_and_morty_app/feature/episode/widgets/loading_card.dart';
 import 'package:rick_and_morty_app/feature/episode/widgets/no_character_card.dart';
-import 'package:rick_and_morty_app/product/costants/static_colors.dart';
+import 'package:rick_and_morty_app/product/constants/static_colors.dart';
 import 'package:rick_and_morty_app/feature/episode/model/episode_model.dart';
 import 'package:rick_and_morty_app/product/service/service.dart';
-import 'package:rick_and_morty_app/product/costants/static_font_style.dart';
-import 'package:rick_and_morty_app/product/costants/static_paddings.dart';
-import 'package:rick_and_morty_app/product/costants/static_texts.dart';
+import 'package:rick_and_morty_app/product/constants/static_font_style.dart';
+import 'package:rick_and_morty_app/product/constants/static_paddings.dart';
+import 'package:rick_and_morty_app/product/constants/static_texts.dart';
 
 class EpisodeDetails extends StatelessWidget {
   EpisodeDetails({super.key, required this.episode});
